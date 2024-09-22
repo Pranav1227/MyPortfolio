@@ -31,19 +31,19 @@
             <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="#home">Home</a>
+                        <a class="nav-link" href="#">HOME</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#projects">Projects</a>
+                        <a class="nav-link" href="#projects">PROJECTS</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#skills">Skills</a>
+                        <a class="nav-link" href="#skills">SKILLS</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#certification">Certification</a>
+                        <a class="nav-link" href="#certification">CERTIFICATION</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#contact">Contact</a>
+                        <a class="nav-link" href="#contact">CONTACT</a>
                     </li>
                 </ul>
             </div>
@@ -64,14 +64,32 @@
                 <h5 style="font-style: italic;">I have graduate with a Bachelor of Engineering in Computer
                     Engineering. My academic journey has equipped me with a solid foundation in software development. I
                     have a keen interest in software development and I am passionate about leveraging technology to
-                    solve real-world problems.</h5>
-                <button type="button" class="btn btn-danger">Contact Me</button>
+                    solve real-world problems.</h5> <br>
+                    <a href="#contact">
+                        <button type="button" class="btn btn-danger">Contact Me</button>
+                    </a>
+                <!-- Social Media  -->
+                <div class="social-media">
+                    <a href="https://www.linkedin.com/in/pranav-bandagle-a104b1283/" target="_blank" class="social-btn">
+                        <i class="fab fa-linkedin fa-icon"></i>
+                    </a>
+                    <a href="https://github.com/Pranav1227" target="_blank" class="social-btn">
+                        <i class="fab fa-github fa-icon"></i>
+                    </a>
+                    <a href="https://www.instagram.com/pranav.5.1?igsh=MTVxMzF3N3pvaDQ0OQ==" target="_blank"
+                        class="social-btn">
+                        <i class="fab fa-instagram fa-icon"></i>
+                    </a>
+                </div>
+                <!-- Social Media Ends -->
+
             </div>
             <div class="col-sm-6">
                 <img src="img/CS.png" class="img-fluid" />
             </div>
         </div>
     </div>
+    <!-- Home Section Ends  -->
 
     <!-- Projects Section -->
     <div id="projects" class="section">
@@ -190,8 +208,8 @@
                 <h3>CSS</h3>
             </div>
             <div class="skill">
-                <div class="circle" data-percentage="60" style="--percentage: 60;">
-                    <div class="percentage">60%</div>
+                <div class="circle" data-percentage="70" style="--percentage: 70;">
+                    <div class="percentage">70%</div>
                     <img src="img/icons/js.png" alt="JavaScript Icon">
                 </div>
                 <h3>JavaScript</h3>
@@ -279,15 +297,15 @@
             </a>
         </div>
     </div>
+    <!-- Certification Ends -->
 
     <!-- Contact Section -->
     <div id="contact" class="section bg-light">
-        <h1 class="S">CONTACT ME <img src="img/icons/contact.png" class="I" style="width: 50;" height="50"></h1>
+        <h1 class="S">CONTACT ME <img src="img/icons/contact.png" class="I" style="width: 50px; height: 50px;"></h1>
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
                     <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
-
                         <input type="hidden" name="access_key" value="05c779de-ca16-4370-9678-44d12a2af8b4">
                         <div class="mb-3">
                             <label for="name" class="form-label">Name</label>
@@ -305,8 +323,9 @@
                     </form>
                 </div>
                 <div class="col-md-6">
-                    <!-- <h3>Get in Touch / Hire Me</h3> -->
-                    <p>If you're looking for a dedicated and skilled developer, I'm available for hire! Please feel free to reach out to me by filling out the form or contacting me directly. I would love the opportunity to discuss how I can contribute to your team. <strong>ThankYou</strong></p>
+                    <p>If you're looking for a dedicated and skilled developer, I'm available for hire! Please feel free
+                        to reach out to me by filling out the form or contacting me directly. I would love the
+                        opportunity to discuss how I can contribute to your team. <strong>Thank you!</strong></p>
                     <ul class="list-unstyled">
                         <li><i class="bi bi-envelope-fill"></i> pranavbandagle18@gmail.com</li>
                         <li><i class="bi bi-phone-fill"></i> +91 8169020162</li>
@@ -317,12 +336,19 @@
         </div>
     </div>
 
-    
+    <!-- Contact Section Ends -->
+
     <!-- Footer -->
     <footer class="bg-dark text-light text-center py-3">
         <p>&copy; 2024 Pranav Bandagle. All rights reserved.</p>
     </footer>
     <!-- Footer Ends -->
+
+    <!-- Arrow -->
+    <a href="#" id="scrollToTopBtn" class="scroll-to-top-btn">
+        <i class="fas fa-chevron-up"></i>
+    </a>        
+    <!-- Arrow Ends  -->
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
@@ -332,9 +358,11 @@
     <script src="JS/skill.js"></script>
     <script>
         if (window.location.pathname !== '#home' && window.location.pathname !== '/') {
-            window.location.href = '#home';
+            window.location.href = '#';
         }
     </script>
+    <!-- Scripts Ends -->
 
 </body>
+
 </html>

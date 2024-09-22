@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "bootstrap": "^5.3.3",
-    "emailjs": "^4.0.3"
+    "emailjs": "^4.0.3",
+    "firebase": "^10.13.0"
   }
 }
