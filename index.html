@@ -1,368 +1,437 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pranav Portfolio</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="icon" href="img/fav/android-chrome-512x512.png">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pranav Bandagle — Full Stack Developer</title>
+  <meta name="description" content="Pranav Bandagle — MERN Stack & Java Full Stack Developer. Mumbai, India.">
+  <link rel="icon" href="img/fav/android-chrome-512x512.png">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">
-                <img src="img/pb-high-resolution-logo-transparent.png" alt="Logo" loading="lazy" />
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">HOME</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#projects">PROJECTS</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#skills">SKILLS</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#certification">CERTIFICATION</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#contact">CONTACT</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="d-flex align-items-center">
-                <a class="text-reset me-3" href="img/PranavResume.pdf">
-                    <button type="button" class="btn btn-danger">View Resume</button>
-                </a>
-            </div>
-        </div>
-    </nav>
 
-    <!-- Home Section -->
-    <div id="home" class="container text-center">
-        <div class="row">
-            <div class="col-sm-6 d-flex flex-column justify-content-center">
-                <h3>Hello! I am</h3>
-                <h1 class="highlight">PRANAV BANDAGLE,</h1>
-                <h5 style="font-style: italic;">I have graduate with a Bachelor of Engineering in Computer
-                    Engineering. My academic journey has equipped me with a solid foundation in software development. I
-                    have a keen interest in software development and I am passionate about leveraging technology to
-                    solve real-world problems.</h5> <br>
-                    <a href="#contact">
-                        <button type="button" class="btn btn-danger">Contact Me</button>
-                    </a>
-                <!-- Social Media  -->
-                <div class="social-media">
-                    <a href="https://www.linkedin.com/in/pranav-bandagle-a104b1283/" target="_blank" class="social-btn">
-                        <i class="fab fa-linkedin fa-icon"></i>
-                    </a>
-                    <a href="https://github.com/Pranav1227" target="_blank" class="social-btn">
-                        <i class="fab fa-github fa-icon"></i>
-                    </a>
-                    <a href="https://www.instagram.com/pranav.5.1?igsh=MTVxMzF3N3pvaDQ0OQ==" target="_blank"
-                        class="social-btn">
-                        <i class="fab fa-instagram fa-icon"></i>
-                    </a>
-                </div>
-                <!-- Social Media Ends -->
+<!-- SCROLL PROGRESS -->
+<div id="scrollProgress"></div>
 
-            </div>
-            <div class="col-sm-6">
-                <img src="img/CS.png" class="img-fluid" />
-            </div>
-        </div>
+<!-- CUSTOM CURSOR -->
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="loader-inner">
+    <div class="loader-name">PB.</div>
+    <div class="loader-bar"><div class="loader-bar-fill"></div></div>
+  </div>
+</div>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand" href="#"><img src="img/pb-high-resolution-logo-transparent.png" alt="PB"></a>
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <i class="fas fa-bars" style="color:#c9a96e;font-size:18px;"></i>
+    </button>
+    <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+        <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+        <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+        <li class="nav-item"><a class="nav-link" href="#certification">Certifications</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+      </ul>
     </div>
-    <!-- Home Section Ends  -->
+    <a href="img/PranavResume.pdf" target="_blank" class="btn-resume ms-3">↓ Resume</a>
+  </div>
+</nav>
 
-    <!-- Projects Section -->
-    <div id="projects" class="section">
-        <h1 class="S">PROJECT'S <img src="img/icons/project.png" class="I" style="width: 50;" height="50"></h1>
-        <div class="row justify-content-center">
+<!-- SOCIAL FLOAT -->
+<div class="social-float">
+  <a href="https://www.linkedin.com/in/pranav-bandagle-a104b1283/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+  <a href="https://github.com/Pranav1227" target="_blank"><i class="fab fa-github"></i></a>
+  <a href="https://www.instagram.com/pranav.5.1" target="_blank"><i class="fab fa-instagram"></i></a>
+</div>
 
-            <!-- project 1  -->
-            <div class="col-md-4 project">
-                <div id="carouselId" class="carousel slide" data-bs-ride="carousel">
-
-                    <div class="carousel-inner" role="listbox">
-
-                        <div class="carousel-item active">
-                            <img src="img/exampoint/main.png" class="img-fluid" alt="Image">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="img/exampoint/registration.png" class="img-fluid" alt="Image">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="img/exampoint/loginDone.png" class="img-fluid" alt="Image">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="img/exampoint/dashboard.png" class="img-fluid" alt="Image">
-                        </div>
-
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselId"
-                            data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon btn bg-primary" aria-hidden="false"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselId"
-                            data-bs-slide="next">
-                            <span class="carousel-control-next-icon btn bg-primary" aria-hidden="false"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
-                    </div> <br>
-                    <div class="p1">
-                        <h3>Exam Point</h3>
-                        <p>Developed and designed "Exam Point," a comprehensive platform for users to test themselves
-                            and
-                            interact with others through chat and feedback features. The application was built using
-                            Spring
-                            Boot, Angular, and MySQL.</p>
-                        <a class="text-reset me-3" href="https://github.com/Pranav1227/Exam_Point">
-                            <button type="button" class="btn btn-dark">Github Link</button>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-
-            <!-- project 2  -->
-            <div class="col-md-4 project">
-                <div id="carouselProject2" class="carousel slide" data-bs-ride="carousel">
-
-                    <div class="carousel-inner" role="listbox">
-                        <div class="carousel-item active">
-                            <img src="img/safar/safar.png" class="img-fluid" alt="Image">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="img/safar/place.png" class="img-fluid" alt="Image">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="img/safar/registration.png" class="img-fluid" alt="Image">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="img/safar/login.png" class="img-fluid" alt="Image">
-                        </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselProject2"
-                            data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon btn bg-primary" aria-hidden="false"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselProject2"
-                            data-bs-slide="next">
-                            <span class="carousel-control-next-icon btn bg-primary" aria-hidden="false"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
-                    </div><br>
-                    <div class="p2">
-                        <h3>Safar Tourism</h3>
-                        <p>Developed and designed a comprehensive tourism website, "SafarTourism," using HTML, CSS, and
-                            JavaScript. The platform provides users with detailed information about various travel
-                            destinations around the world, including images, descriptions, and travel tips.</p>
-                        <a class="text-reset me-3" href="https://safartourism.netlify.app/">
-                            <button type="button" class="btn btn-dark" style="align-items: center;">Visit
-                                Project</button>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-
+<!-- ═══════════ HERO ═══════════ -->
+<section id="home">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6">
+        <div class="hero-eyebrow">Available for hire</div>
+        <p class="mb-1" style="font-size:18px;color:var(--text-2);">Hello, I'm</p>
+        <h1 class="hero-name" id="heroName">Pranav<br>Bandagle</h1>
+        <p class="hero-role"><span class="typed-text" id="typedText"></span></p>
+        <p class="hero-desc">B.E. Computer Engineering graduate from Mumbai, specialising in MERN Stack and Java Spring Boot. I build scalable, production-ready web applications with clean architecture.</p>
+        <div class="hero-actions">
+          <a href="#projects" class="btn-fill"><i class="fas fa-arrow-right"></i> View Work</a>
+          <a href="#contact" class="btn-ghost">Let's Talk</a>
         </div>
+        <div class="hero-stats">
+          <div class="stat"><div class="stat-num counter" data-target="2">0</div><div class="stat-lbl">Projects</div></div>
+          <div class="stat"><div class="stat-num">1+</div><div class="stat-lbl">Yr Experience</div></div>
+          <div class="stat"><div class="stat-num counter" data-target="15">0</div><div class="stat-lbl">Technologies</div></div>
+          <div class="stat"><div class="stat-num counter" data-target="2">0</div><div class="stat-lbl">Certs</div></div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <!-- CODE EDITOR -->
+        <div class="code-editor">
+          <div class="editor-topbar">
+            <div class="editor-dots">
+              <span class="dot-red"></span>
+              <span class="dot-yellow"></span>
+              <span class="dot-green"></span>
+            </div>
+            <div class="editor-tab">
+              <i class="fab fa-js" style="color:#c9a96e;font-size:13px;"></i> developer.js
+            </div>
+            <div class="editor-actions">
+              <span class="editor-icon">⊡</span>
+            </div>
+          </div>
+          <div class="editor-body">
+            <div class="editor-lines" id="lineNums"></div>
+            <pre class="editor-code" id="editorCode"><code id="codeOutput"></code><span class="code-cursor">▋</span></pre>
+          </div>
+          <div class="editor-statusbar">
+            <span>JavaScript</span>
+            <span>UTF-8</span>
+            <span style="color:var(--accent);">● Pranav Bandagle</span>
+          </div>
+        </div>
+      </div>
     </div>
-    <!-- Project Ends  -->
+  </div>
+</section>
+
+<!-- MARQUEE STRIP -->
+<div class="marquee-strip">
+  <div class="marquee-track">
+    <span class="marquee-item">MongoDB</span><span class="marquee-item">Express.js</span>
+    <span class="marquee-item">React</span><span class="marquee-item">Node.js</span>
+    <span class="marquee-item">Spring Boot</span><span class="marquee-item">Angular</span>
+    <span class="marquee-item">MySQL</span><span class="marquee-item">JavaScript</span>
+    <span class="marquee-item">Java</span><span class="marquee-item">REST APIs</span>
+    <span class="marquee-item">GitHub</span><span class="marquee-item">Postman</span>
+    <!-- Duplicate for seamless loop -->
+    <span class="marquee-item">MongoDB</span><span class="marquee-item">Express.js</span>
+    <span class="marquee-item">React</span><span class="marquee-item">Node.js</span>
+    <span class="marquee-item">Spring Boot</span><span class="marquee-item">Angular</span>
+    <span class="marquee-item">MySQL</span><span class="marquee-item">JavaScript</span>
+    <span class="marquee-item">Java</span><span class="marquee-item">REST APIs</span>
+    <span class="marquee-item">GitHub</span><span class="marquee-item">Postman</span>
+  </div>
+</div>
 
 
-    <!-- Skills Start -->
-    <div id="skills" class="section">
-        <h1 class="S">MY SKILL'S <img src="img/icons/skill.png" class="I" style="width: 80;" height="80"></h1>
+<!-- ═══════════ EXPERIENCE ═══════════ -->
+<section id="experience" class="section">
+  <div class="container">
+    <span class="sec-tag fade-up">Career</span>
+    <h2 class="sec-heading fade-up">Work <em>Experience</em></h2>
 
-        <div class="skill-container">
-            <div class="skill">
-                <div class="circle" data-percentage="80" style="--percentage: 80;">
-                    <div class="percentage">80%</div>
-                    <img src="img/icons/html.png" alt="HTML Icon">
-                </div>
-                <h3>HTML</h3>
-            </div>
-            <div class="skill">
-                <div class="circle" data-percentage="80" style="--percentage: 80;">
-                    <div class="percentage">80%</div>
-                    <img src="img/icons/css3.png" alt="CSS Icon">
-                </div>
-                <h3>CSS</h3>
-            </div>
-            <div class="skill">
-                <div class="circle" data-percentage="70" style="--percentage: 70;">
-                    <div class="percentage">70%</div>
-                    <img src="img/icons/js.png" alt="JavaScript Icon">
-                </div>
-                <h3>JavaScript</h3>
-            </div>
-            <div class="skill">
-                <div class="circle" data-percentage="80" style="--percentage: 80;">
-                    <div class="percentage">80%</div>
-                    <img src="img/icons/java.png" alt="HTML Icon">
-                </div>
-                <h3>JAVA</h3>
-            </div>
-            <div class="skill">
-                <div class="circle" data-percentage="70" style="--percentage: 70;">
-                    <div class="percentage">70%</div>
-                    <img src="img/icons/angular.png" alt="HTML Icon">
-                </div>
-                <h3>ANGULAR</h3>
-            </div>
-            <div class="skill">
-                <div class="circle" data-percentage="80" style="--percentage: 80;">
-                    <div class="percentage">80%</div>
-                    <img src="img/icons/sb.png" alt="HTML Icon">
-                </div>
-                <h3>SpringBoot</h3>
-            </div>
-            <div class="skill">
-                <div class="circle" data-percentage="80" style="--percentage: 80;">
-                    <div class="percentage">80%</div>
-                    <img src="img/icons/mysql.png" alt="HTML Icon">
-                </div>
-                <h3>MySQL</h3>
-            </div>
-            <div class="skill">
-                <div class="circle" data-percentage="80" style="--percentage: 80;">
-                    <div class="percentage">80%</div>
-                    <img src="img/icons/e.svg" alt="HTML Icon">
-                </div>
-                <h3>Eclipse</h3>
-            </div>
-            <div class="skill">
-                <div class="circle" data-percentage="80" style="--percentage: 80;">
-                    <div class="percentage">80%</div>
-                    <img src="img/icons/vs.png" alt="HTML Icon">
-                </div>
-                <h3>VsCode</h3>
-            </div>
-            <div class="skill">
-                <div class="circle" data-percentage="80" style="--percentage: 80;">
-                    <div class="percentage">80%</div>
-                    <img src="img/icons/postman.svg" alt="HTML Icon">
-                </div>
-                <h3>Postman</h3>
-            </div>
-            <div class="skill">
-                <div class="circle" data-percentage="80" style="--percentage: 80;">
-                    <div class="percentage">80%</div>
-                    <img src="img/icons/github.png" alt="HTML Icon">
-                </div>
-                <h3>GitHub</h3>
-            </div>
+    <div class="exp-timeline">
+
+      <!-- Current Role -->
+      <div class="exp-item fade-up">
+        <div class="exp-left">
+          <div class="exp-dot active"></div>
+          <div class="exp-line"></div>
         </div>
+        <div class="exp-card">
+          <div class="exp-header">
+            <div>
+              <div class="exp-badge current">Current</div>
+              <h3 class="exp-role">MERN Stack Developer</h3>
+              <div class="exp-company">
+                <i class="fas fa-building"></i> Mytek Innovations
+              </div>
+            </div>
+            <div class="exp-meta">
+              <div class="exp-date"><i class="fas fa-calendar-alt"></i> Sept 2025 — Present</div>
+              <div class="exp-duration"><i class="fas fa-clock"></i> ~10 months</div>
+              <div class="exp-type full-time">Full-time</div>
+            </div>
+          </div>
+          <p class="exp-desc">Working as a Full Stack MERN developer, building and maintaining scalable web applications. Responsible for both frontend (React) and backend (Node.js / Express / MongoDB) development with a focus on clean architecture and performance.</p>
+          <div class="exp-tech">
+            <span class="exp-tag"><i class="devicon-react-original colored"></i> React</span>
+            <span class="exp-tag"><i class="devicon-nodejs-plain colored"></i> Node.js</span>
+            <span class="exp-tag"><i class="devicon-express-original" style="color:#c9d1d9"></i> Express</span>
+            <span class="exp-tag"><i class="devicon-mongodb-plain colored"></i> MongoDB</span>
+            <span class="exp-tag"><i class="fab fa-js" style="color:#f0db4f"></i> JavaScript</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Internship -->
+      <div class="exp-item fade-up">
+        <div class="exp-left">
+          <div class="exp-dot"></div>
+        </div>
+        <div class="exp-card">
+          <div class="exp-header">
+            <div>
+              <div class="exp-badge intern">Internship</div>
+              <h3 class="exp-role">MERN Stack Developer Intern</h3>
+              <div class="exp-company">
+                <i class="fas fa-building"></i> Mytek Innovations
+              </div>
+            </div>
+            <div class="exp-meta">
+              <div class="exp-date"><i class="fas fa-calendar-alt"></i> June 2025 — Sept 2025</div>
+              <div class="exp-duration"><i class="fas fa-clock"></i> 3 months</div>
+              <div class="exp-type internship">Internship</div>
+            </div>
+          </div>
+          <p class="exp-desc">Joined Mytek Innovations as a MERN Stack intern, gaining hands-on industry experience. Contributed to real-world projects, collaborated with senior developers, and sharpened full-stack skills in a professional environment.</p>
+          <div class="exp-tech">
+            <span class="exp-tag"><i class="devicon-react-original colored"></i> React</span>
+            <span class="exp-tag"><i class="devicon-nodejs-plain colored"></i> Node.js</span>
+            <span class="exp-tag"><i class="devicon-mongodb-plain colored"></i> MongoDB</span>
+            <span class="exp-tag"><i class="devicon-express-original" style="color:#c9d1d9"></i> Express</span>
+          </div>
+        </div>
+      </div>
+
     </div>
-    <!-- Skills End -->
+  </div>
+</section>
 
-    <!-- Certification Section -->
-    <div id="certification" class="section">
-        <h1 class="S">
-            CERTIFICATION'S <img src="img/icons/certification.png" class="I" style="padding: 10px;">
-        </h1>
-        <div class="certification-card">
-            <h3>Java FullStack Developer</h3>
-            <p>Certification Program in Java Full Stack by Edu Bridge Learning Pvt Ltd. <br>
-                Learned Frontend & Backend Technologies and also created a mini project on core Java and a major project
-                using Spring Boot and Angular.</p>
-            <a href="img/EdubridgeCertificate.png" class="view-certificate-btn">
-                <button type="button" class="btn btn-dark">View Certificate</button>
-            </a>
+<!-- ═══════════ PROJECTS ═══════════ -->
+<section id="projects" class="section">
+  <div class="container">
+    <span class="sec-tag fade-up">Selected Work</span>
+    <h2 class="sec-heading fade-up">Projects</h2>
+
+    <div class="proj-list">
+
+      <!-- Project 01 -->
+      <div class="proj-item fade-up">
+        <div class="proj-num">01</div>
+        <div class="proj-info">
+          <h3>Exam Point</h3>
+          <p>A full-stack exam platform where users can test themselves and communicate through real-time chat and feedback. Built with Java Spring Boot backend and Angular frontend.</p>
+          <div class="proj-tags">
+            <span class="proj-tag">Spring Boot</span>
+            <span class="proj-tag">Angular</span>
+            <span class="proj-tag">MySQL</span>
+            <span class="proj-tag">REST API</span>
+            <span class="proj-tag">Java</span>
+          </div>
         </div>
-        <div class="certification-card">
-            <h3>Web Development</h3>
-            <p>Certification Program in Web Development <br>
-                Learned about HTML CSS & JS Technologies and also created a mini project in it</p>
-            <a href="img/shapeAI.png" class="view-certificate-btn">
-                <button type="button" class="btn btn-dark">View Certificate</button>
-            </a>
+        <div class="proj-preview">
+          <img src="img/exampoint/main.png" alt="Exam Point">
         </div>
+        <div class="proj-cta">
+          <a href="https://github.com/Pranav1227/Exam_Point" target="_blank" class="lnk-primary"><i class="fab fa-github"></i> GitHub</a>
+        </div>
+      </div>
+
+      <!-- Project 02 -->
+      <div class="proj-item fade-up">
+        <div class="proj-num">02</div>
+        <div class="proj-info">
+          <h3>Safar Tourism</h3>
+          <p>A beautifully designed tourism web app with detailed destination pages, travel tips and image galleries. Fully responsive with smooth UI interactions.</p>
+          <div class="proj-tags">
+            <span class="proj-tag">HTML</span>
+            <span class="proj-tag">CSS</span>
+            <span class="proj-tag">JavaScript</span>
+            <span class="proj-tag">Responsive</span>
+          </div>
+        </div>
+        <div class="proj-preview">
+          <img src="img/safar/safar.png" alt="Safar Tourism">
+        </div>
+        <div class="proj-cta">
+          <a href="https://safartourism.netlify.app/" target="_blank" class="lnk-primary"><i class="fas fa-external-link-alt"></i> Live</a>
+        </div>
+      </div>
+
     </div>
-    <!-- Certification Ends -->
+  </div>
+</section>
 
-    <!-- Contact Section -->
-    <div id="contact" class="section bg-light">
-        <h1 class="S">CONTACT ME <img src="img/icons/contact.png" class="I" style="width: 50px; height: 50px;"></h1>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
-                        <input type="hidden" name="access_key" value="05c779de-ca16-4370-9678-44d12a2af8b4">
-                        <div class="mb-3">
-                            <label for="name" class="form-label">Name</label>
-                            <input type="text" class="form-control" id="name" name="name" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="email" class="form-label">Email address</label>
-                            <input type="email" class="form-control" id="email" name="email" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="message" class="form-label">Message</label>
-                            <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-danger">Send Message</button>
-                    </form>
-                </div>
-                <div class="col-md-6">
-                    <p>If you're looking for a dedicated and skilled developer, I'm available for hire! Please feel free
-                        to reach out to me by filling out the form or contacting me directly. I would love the
-                        opportunity to discuss how I can contribute to your team. <strong>Thank you!</strong></p>
-                    <ul class="list-unstyled">
-                        <li><i class="bi bi-envelope-fill"></i> pranavbandagle18@gmail.com</li>
-                        <li><i class="bi bi-phone-fill"></i> +91 8169020162</li>
-                        <li><i class="bi bi-geo-alt-fill"></i> Mumbai, Maharashtra, India</li>
-                    </ul>
-                </div>
+<!-- ═══════════ SKILLS BENTO ═══════════ -->
+<section id="skills" class="section">
+  <div class="container">
+    <span class="sec-tag fade-up">Expertise</span>
+    <h2 class="sec-heading fade-up">Skills &amp; Stack</h2>
+
+    <div class="bento">
+
+      <!-- Row 1: Featured MERN card (left) + MERN bars (right) -->
+      <div class="bento-card featured fade-up">
+        <div class="bento-label">Primary Stack</div>
+        <div class="bento-title">MERN</div>
+        <div class="bento-sub">Full-stack JavaScript development. Building scalable APIs and dynamic UIs at 80% proficiency.</div>
+        <div class="skill-chips" style="margin-top:20px;">
+          <span class="s-chip"><i class="devicon-mongodb-plain colored"></i> MongoDB</span>
+          <span class="s-chip"><i class="devicon-express-original" style="color:#fff;"></i> Express</span>
+          <span class="s-chip"><i class="devicon-react-original colored"></i> React</span>
+          <span class="s-chip"><i class="devicon-nodejs-plain colored"></i> Node.js</span>
+        </div>
+      </div>
+
+      <div class="bento-card wide fade-up">
+        <div class="bento-label">MERN Proficiency</div>
+        <div class="skill-bars">
+          <div class="skill-bar-item">
+            <div class="skill-bar-head"><span class="skill-bar-name">MongoDB</span><span class="skill-bar-pct">80%</span></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="80"></div></div>
+          </div>
+          <div class="skill-bar-item">
+            <div class="skill-bar-head"><span class="skill-bar-name">Express.js</span><span class="skill-bar-pct">80%</span></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="80"></div></div>
+          </div>
+          <div class="skill-bar-item">
+            <div class="skill-bar-head"><span class="skill-bar-name">React</span><span class="skill-bar-pct">80%</span></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="80"></div></div>
+          </div>
+          <div class="skill-bar-item">
+            <div class="skill-bar-head"><span class="skill-bar-name">Node.js</span><span class="skill-bar-pct">80%</span></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="80"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 2: Java stack (merged chips + bars in one card) + Quote -->
+      <div class="bento-card" style="grid-column:span 7;" class="fade-up">
+        <div class="bento-label">Java Stack</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:12px;">
+          <div class="skill-chips" style="flex-direction:column;display:flex;gap:10px;">
+            <span class="s-chip"><img src="img/icons/java.png"> Java</span>
+            <span class="s-chip"><img src="img/icons/sb.png"> Spring Boot</span>
+            <span class="s-chip"><i class="devicon-angularjs-plain colored"></i> Angular</span>
+            <span class="s-chip"><img src="img/icons/mysql.png"> MySQL</span>
+          </div>
+          <div class="skill-bars">
+            <div class="skill-bar-item">
+              <div class="skill-bar-head"><span class="skill-bar-name">Java</span><span class="skill-bar-pct">80%</span></div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-width="80"></div></div>
             </div>
+            <div class="skill-bar-item">
+              <div class="skill-bar-head"><span class="skill-bar-name">Spring Boot</span><span class="skill-bar-pct">80%</span></div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-width="80"></div></div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-bar-head"><span class="skill-bar-name">Angular</span><span class="skill-bar-pct">70%</span></div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-width="70"></div></div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-bar-head"><span class="skill-bar-name">MySQL</span><span class="skill-bar-pct">80%</span></div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-width="80"></div></div>
+            </div>
+          </div>
         </div>
+      </div>
+
+      <div class="bento-card fade-up" style="grid-column:span 5;background:var(--bg-3);">
+        <div class="bento-label">Philosophy</div>
+        <div class="bento-quote">"Write code that <em>humans</em> can read."</div>
+      </div>
+
+      <!-- Row 3: Frontend + Tools (balanced 6+6) -->
+      <div class="bento-card fade-up" style="grid-column:span 6;">
+        <div class="bento-label">Frontend</div>
+        <div class="skill-chips" style="margin-top:12px;">
+          <span class="s-chip"><img src="img/icons/html.png"> HTML5</span>
+          <span class="s-chip"><img src="img/icons/css3.png"> CSS3</span>
+          <span class="s-chip"><img src="img/icons/js.png"> JavaScript</span>
+        </div>
+      </div>
+
+      <div class="bento-card fade-up" style="grid-column:span 6;">
+        <div class="bento-label">Tools &amp; DevOps</div>
+        <div class="skill-chips" style="margin-top:12px;">
+          <span class="s-chip"><img src="img/icons/github.png"> GitHub</span>
+          <span class="s-chip"><img src="img/icons/postman.svg"> Postman</span>
+          <span class="s-chip"><img src="img/icons/vs.png"> VS Code</span>
+          <span class="s-chip"><img src="img/icons/e.svg"> Eclipse</span>
+        </div>
+      </div>
+
     </div>
 
-    <!-- Contact Section Ends -->
+  </div>
+</section>
 
-    <!-- Footer -->
-    <footer class="bg-dark text-light text-center py-3">
-        <p>&copy; 2024 Pranav Bandagle. All rights reserved.</p>
-    </footer>
-    <!-- Footer Ends -->
+<!-- ═══════════ CERTIFICATIONS ═══════════ -->
+<section id="certification" class="section">
+  <div class="container">
+    <span class="sec-tag fade-up">Achievements</span>
+    <h2 class="sec-heading fade-up">Certifications</h2>
+    <div class="cert-grid">
+      <div class="cert-card fade-up">
+        <div class="cert-icon"><i class="fas fa-code"></i></div>
+        <h3>Java Full Stack Developer</h3>
+        <div class="cert-issuer">Edu Bridge Learning Pvt Ltd</div>
+        <p>Comprehensive program covering Frontend &amp; Backend. Built a core Java mini-project and a major project using Spring Boot and Angular with real-world architecture.</p>
+        <a href="img/EdubridgeCertificate.png" target="_blank" class="cert-btn"><i class="fas fa-certificate"></i> View Certificate</a>
+      </div>
+      <div class="cert-card fade-up">
+        <div class="cert-icon"><i class="fas fa-globe"></i></div>
+        <h3>Web Development</h3>
+        <div class="cert-issuer">ShapeAI</div>
+        <p>Certification covering the fundamentals of modern web development — HTML, CSS, JavaScript — with a hands-on mini-project to demonstrate practical application.</p>
+        <a href="img/shapeAI.png" target="_blank" class="cert-btn"><i class="fas fa-certificate"></i> View Certificate</a>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- Arrow -->
-    <a href="#" id="scrollToTopBtn" class="scroll-to-top-btn">
-        <i class="fas fa-chevron-up"></i>
-    </a>        
-    <!-- Arrow Ends  -->
+<!-- ═══════════ CONTACT ═══════════ -->
+<section id="contact" class="section">
+  <div class="container">
+    <span class="sec-tag fade-up">Get In Touch</span>
+    <h2 class="sec-heading fade-up">Let's Work Together</h2>
+    <div class="contact-wrapper">
+      <div class="fade-up">
+        <h3 class="contact-heading">Ready to build something <em>great?</em></h3>
+        <p class="contact-desc">Open to full-time roles, freelance projects, and collaborations. If you have an idea or an opportunity, drop me a message.</p>
+        <div class="contact-item">
+          <div class="ci-icon"><i class="fas fa-envelope"></i></div>
+          <div><div class="ci-label">Email</div><div class="ci-val">pranavbandagle18@gmail.com</div></div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon"><i class="fas fa-phone"></i></div>
+          <div><div class="ci-label">Phone</div><div class="ci-val">+91 8169020162</div></div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon"><i class="fas fa-map-marker-alt"></i></div>
+          <div><div class="ci-label">Location</div><div class="ci-val">Mumbai, Maharashtra, India</div></div>
+        </div>
+      </div>
+      <div class="contact-form-wrap fade-up">
+        <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+          <input type="hidden" name="access_key" value="05c779de-ca16-4370-9678-44d12a2af8b4">
+          <div class="form-group"><label>Your Name</label><input type="text" name="name" placeholder="John Doe" required></div>
+          <div class="form-group"><label>Email Address</label><input type="email" name="email" placeholder="john@example.com" required></div>
+          <div class="form-group"><label>Message</label><textarea name="message" rows="5" placeholder="Tell me about your project..." required></textarea></div>
+          <button type="submit" class="btn-submit"><i class="fas fa-paper-plane me-2"></i>Send Message</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
-        integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
-    <script src="JS/skill.js"></script>
-    <script>
-        if (window.location.pathname !== '#home' && window.location.pathname !== '/') {
-            window.location.href = '#';
-        }
-    </script>
-    <!-- Scripts Ends -->
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 <span>Pranav Bandagle</span> · Built with precision & passion</p>
+</footer>
 
+<!-- SCROLL TO TOP -->
+<a href="#" id="scrollToTopBtn" class="scroll-to-top-btn"><i class="fas fa-chevron-up"></i></a>
+
+<!-- SCRIPTS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+<script src="JS/skill.js"></script>
 </body>
-
 </html>
