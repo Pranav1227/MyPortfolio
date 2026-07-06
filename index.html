@@ -46,8 +46,16 @@
         <li class="nav-item"><a class="nav-link" href="#certification">Certifications</a></li>
         <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
       </ul>
+      <div class="mobile-nav-social d-lg-none mt-4 mb-2">
+        <a href="https://www.linkedin.com/in/pranav-bandagle-a104b1283/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://github.com/Pranav1227" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://www.instagram.com/pranav.5.1" target="_blank"><i class="fab fa-instagram"></i></a>
+      </div>
+      <div class="d-lg-none text-center mt-3 mb-3">
+        <a href="img/Pranav%20Resume.pdf" target="_blank" class="btn-resume" style="width: 100%; display: inline-block; padding: 12px 0;">↓ Resume</a>
+      </div>
     </div>
-    <a href="img/PranavResume.pdf" target="_blank" class="btn-resume ms-3">↓ Resume</a>
+    <a href="img/Pranav%20Resume.pdf" target="_blank" class="btn-resume ms-3 d-none d-lg-block">↓ Resume</a>
   </div>
 </nav>
 
@@ -63,7 +71,7 @@
   <div class="container">
     <div class="row align-items-center g-5">
       <div class="col-lg-6">
-        <div class="hero-eyebrow">Available for hire</div>
+
         <p class="mb-1" style="font-size:18px;color:var(--text-2);">Hello, I'm</p>
         <h1 class="hero-name" id="heroName">Pranav<br>Bandagle</h1>
         <p class="hero-role"><span class="typed-text" id="typedText"></span></p>
@@ -71,12 +79,6 @@
         <div class="hero-actions">
           <a href="#projects" class="btn-fill"><i class="fas fa-arrow-right"></i> View Work</a>
           <a href="#contact" class="btn-ghost">Let's Talk</a>
-        </div>
-        <div class="hero-stats">
-          <div class="stat"><div class="stat-num counter" data-target="2">0</div><div class="stat-lbl">Projects</div></div>
-          <div class="stat"><div class="stat-num">1+</div><div class="stat-lbl">Yr Experience</div></div>
-          <div class="stat"><div class="stat-num counter" data-target="15">0</div><div class="stat-lbl">Technologies</div></div>
-          <div class="stat"><div class="stat-num counter" data-target="2">0</div><div class="stat-lbl">Certs</div></div>
         </div>
       </div>
       <div class="col-lg-6">
@@ -213,11 +215,72 @@
     <div class="proj-list">
 
       <!-- Project 01 -->
-      <div class="proj-item fade-up">
+      <div class="proj-item fade-up" style="align-items: start;">
         <div class="proj-num">01</div>
         <div class="proj-info">
+          <h3>Open4All - Employee Background Verification Platform</h3>
+          <div class="proj-subtitle">Mytek Innovations Pvt. Ltd.</div>
+          <ul class="proj-desc-list">
+            <li>Developed a multi-service background verification platform to detect fraudulent employee data.</li>
+            <li>Implemented verification modules including Identity, Address, CIBIL Score, Legal, and Employment checks.</li>
+            <li>Built geo-tagging selfie-based address verification to improve authenticity and fraud detection.</li>
+            <li>Designed a system to collect structured feedback from previous employers (HR, managers, colleagues).</li>
+            <li>Generated dynamic PDF reports using HTML-to-PDF (Node.js) with real-time data integration.</li>
+            <li>Developed a responsive UI with reusable components for scalability and maintainability.</li>
+            <li>Improved performance using Redis caching for faster data retrieval.</li>
+          </ul>
+          <div class="proj-tags">
+            <span class="proj-tag">MERN Stack</span>
+            <span class="proj-tag">Tailwind CSS</span>
+            <span class="proj-tag">JWT</span>
+            <span class="proj-tag">Redis</span>
+            <span class="proj-tag">Node.js</span>
+          </div>
+        </div>
+        <div class="proj-cta">
+          <a href="https://www.open4all.in/" target="_blank" class="lnk-primary"><i class="fas fa-external-link-alt"></i> Live</a>
+        </div>
+      </div>
+
+      <!-- Project 02 -->
+      <div class="proj-item fade-up" style="align-items: start;">
+        <div class="proj-num">02</div>
+        <div class="proj-info">
+          <h3>Borade AI</h3>
+          <div class="proj-subtitle">Mytek Innovations Pvt. Ltd.</div>
+          <ul class="proj-desc-list">
+            <li>Developed an AI-powered platform to analyze websites and provide SEO rankings and actionable insights.</li>
+            <li>Built features to identify website strengths and weaknesses through automated analysis.</li>
+            <li>Integrated AI-based content generation for creating images, videos, and social media posts.</li>
+            <li>Enabled integration with platforms including LinkedIn, Instagram, Facebook, YouTube, Twitter (X), and Pinterest.</li>
+            <li>Implemented post scheduling and automated publishing across multiple social media channels.</li>
+            <li>Developed backend services for API integration, data processing, and real-time content generation.</li>
+          </ul>
+          <div class="proj-tags">
+            <span class="proj-tag">MERN Stack</span>
+            <span class="proj-tag">Tailwind CSS</span>
+            <span class="proj-tag">JWT</span>
+            <span class="proj-tag">Redux</span>
+          </div>
+        </div>
+        <div class="proj-cta">
+          <a href="https://www.borade.ai/" target="_blank" class="lnk-primary"><i class="fas fa-external-link-alt"></i> Live</a>
+        </div>
+      </div>
+
+      <!-- Project 03 -->
+      <div class="proj-item fade-up">
+        <div class="proj-num">03</div>
+        <div class="proj-info">
           <h3>Exam Point</h3>
-          <p>A full-stack exam platform where users can test themselves and communicate through real-time chat and feedback. Built with Java Spring Boot backend and Angular frontend.</p>
+          <div class="proj-subtitle">Personal Project</div>
+          <ul class="proj-desc-list">
+            <li>Developed a comprehensive full-stack examination platform with secure user authentication and role-based access control.</li>
+            <li>Designed dynamic assessment modules allowing users to test their knowledge across various subjects and evaluate their performance.</li>
+            <li>Implemented a real-time chat and feedback system to facilitate seamless communication between students and instructors.</li>
+            <li>Built a robust RESTful API using Java Spring Boot, ensuring scalable and efficient backend operations with MySQL data persistence.</li>
+            <li>Created an intuitive, responsive frontend using Angular to provide a seamless and interactive test-taking experience.</li>
+          </ul>
           <div class="proj-tags">
             <span class="proj-tag">Spring Boot</span>
             <span class="proj-tag">Angular</span>
@@ -226,34 +289,11 @@
             <span class="proj-tag">Java</span>
           </div>
         </div>
-        <div class="proj-preview">
-          <img src="img/exampoint/main.png" alt="Exam Point">
-        </div>
         <div class="proj-cta">
           <a href="https://github.com/Pranav1227/Exam_Point" target="_blank" class="lnk-primary"><i class="fab fa-github"></i> GitHub</a>
         </div>
       </div>
 
-      <!-- Project 02 -->
-      <div class="proj-item fade-up">
-        <div class="proj-num">02</div>
-        <div class="proj-info">
-          <h3>Safar Tourism</h3>
-          <p>A beautifully designed tourism web app with detailed destination pages, travel tips and image galleries. Fully responsive with smooth UI interactions.</p>
-          <div class="proj-tags">
-            <span class="proj-tag">HTML</span>
-            <span class="proj-tag">CSS</span>
-            <span class="proj-tag">JavaScript</span>
-            <span class="proj-tag">Responsive</span>
-          </div>
-        </div>
-        <div class="proj-preview">
-          <img src="img/safar/safar.png" alt="Safar Tourism">
-        </div>
-        <div class="proj-cta">
-          <a href="https://safartourism.netlify.app/" target="_blank" class="lnk-primary"><i class="fas fa-external-link-alt"></i> Live</a>
-        </div>
-      </div>
 
     </div>
   </div>
@@ -267,46 +307,73 @@
 
     <div class="bento">
 
-      <!-- Row 1: Featured MERN card (left) + MERN bars (right) -->
-      <div class="bento-card featured fade-up">
+      <!-- Row 1: MERN Stack (7) + Frontend (5) -->
+      <div class="bento-card fade-up" style="grid-column: span 7;">
         <div class="bento-label">Primary Stack</div>
-        <div class="bento-title">MERN</div>
-        <div class="bento-sub">Full-stack JavaScript development. Building scalable APIs and dynamic UIs at 80% proficiency.</div>
-        <div class="skill-chips" style="margin-top:20px;">
-          <span class="s-chip"><i class="devicon-mongodb-plain colored"></i> MongoDB</span>
-          <span class="s-chip"><i class="devicon-express-original" style="color:#fff;"></i> Express</span>
-          <span class="s-chip"><i class="devicon-react-original colored"></i> React</span>
-          <span class="s-chip"><i class="devicon-nodejs-plain colored"></i> Node.js</span>
-        </div>
-      </div>
-
-      <div class="bento-card wide fade-up">
-        <div class="bento-label">MERN Proficiency</div>
-        <div class="skill-bars">
-          <div class="skill-bar-item">
-            <div class="skill-bar-head"><span class="skill-bar-name">MongoDB</span><span class="skill-bar-pct">80%</span></div>
-            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="80"></div></div>
+        <div class="bento-title">MERN Ecosystem</div>
+        <div class="bento-sub">Building scalable APIs and dynamic UIs with full-stack JavaScript.</div>
+        <div class="stack-grid">
+          <div class="skill-chips col-chips">
+            <span class="s-chip"><i class="devicon-mongodb-plain colored"></i> MongoDB</span>
+            <span class="s-chip"><i class="devicon-express-original" style="color:#fff;"></i> Express.js</span>
+            <span class="s-chip"><i class="devicon-react-original colored"></i> React</span>
+            <span class="s-chip"><i class="devicon-nodejs-plain colored"></i> Node.js</span>
           </div>
-          <div class="skill-bar-item">
-            <div class="skill-bar-head"><span class="skill-bar-name">Express.js</span><span class="skill-bar-pct">80%</span></div>
-            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="80"></div></div>
-          </div>
-          <div class="skill-bar-item">
-            <div class="skill-bar-head"><span class="skill-bar-name">React</span><span class="skill-bar-pct">80%</span></div>
-            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="80"></div></div>
-          </div>
-          <div class="skill-bar-item">
-            <div class="skill-bar-head"><span class="skill-bar-name">Node.js</span><span class="skill-bar-pct">80%</span></div>
-            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="80"></div></div>
+          <div class="skill-bars">
+            <div class="skill-bar-item">
+              <div class="skill-bar-head"><span class="skill-bar-name">MongoDB</span><span class="skill-bar-pct">80%</span></div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-width="80"></div></div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-bar-head"><span class="skill-bar-name">Express.js</span><span class="skill-bar-pct">80%</span></div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-width="80"></div></div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-bar-head"><span class="skill-bar-name">React</span><span class="skill-bar-pct">80%</span></div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-width="80"></div></div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-bar-head"><span class="skill-bar-name">Node.js</span><span class="skill-bar-pct">80%</span></div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-width="80"></div></div>
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- Row 2: Java stack (merged chips + bars in one card) + Quote -->
-      <div class="bento-card" style="grid-column:span 7;" class="fade-up">
-        <div class="bento-label">Java Stack</div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:12px;">
-          <div class="skill-chips" style="flex-direction:column;display:flex;gap:10px;">
+      <div class="bento-card fade-up" style="grid-column: span 5; background: linear-gradient(145deg, var(--bg-2) 0%, rgba(201,169,110,0.05) 100%);">
+        <div class="bento-label">UI & Design</div>
+        <div class="bento-title">Frontend</div>
+        <div class="bento-sub">Crafting responsive and pixel-perfect interfaces.</div>
+        <div class="skill-chips" style="margin-top: 20px;">
+          <span class="s-chip"><img src="img/icons/html.png"> HTML5</span>
+          <span class="s-chip"><img src="img/icons/css3.png"> CSS3</span>
+          <span class="s-chip"><img src="img/icons/js.png"> JavaScript</span>
+          <span class="s-chip"><i class="devicon-tailwindcss-plain colored"></i> Tailwind CSS</span>
+          <span class="s-chip"><i class="devicon-bootstrap-plain colored"></i> Bootstrap</span>
+        </div>
+      </div>
+
+      <!-- Row 2: Tools (5) + Java Stack (7) -->
+      <div class="bento-card fade-up" style="grid-column: span 5; background: linear-gradient(145deg, rgba(121,192,255,0.05) 0%, var(--bg-2) 100%);">
+        <div class="bento-label">DevOps & Architecture</div>
+        <div class="bento-title">Tools</div>
+        <div class="bento-sub">Streamlining workflows and optimizing performance.</div>
+        <div class="skill-chips" style="margin-top: 20px;">
+          <span class="s-chip"><i class="devicon-git-plain colored"></i> Git</span>
+          <span class="s-chip"><img src="img/icons/github.png"> GitHub</span>
+          <span class="s-chip"><img src="img/icons/postman.svg"> Postman</span>
+          <span class="s-chip"><img src="img/icons/vs.png"> VS Code</span>
+          <span class="s-chip"><img src="img/icons/e.svg"> Eclipse</span>
+          <span class="s-chip"><i class="devicon-redis-plain colored"></i> Redis</span>
+        </div>
+      </div>
+
+      <div class="bento-card fade-up" style="grid-column: span 7;">
+        <div class="bento-label">Enterprise Stack</div>
+        <div class="bento-title">Java Ecosystem</div>
+        <div class="bento-sub">Robust backends with object-oriented architecture.</div>
+        <div class="stack-grid">
+          <div class="skill-chips col-chips">
             <span class="s-chip"><img src="img/icons/java.png"> Java</span>
             <span class="s-chip"><img src="img/icons/sb.png"> Spring Boot</span>
             <span class="s-chip"><i class="devicon-angularjs-plain colored"></i> Angular</span>
@@ -333,28 +400,25 @@
         </div>
       </div>
 
-      <div class="bento-card fade-up" style="grid-column:span 5;background:var(--bg-3);">
-        <div class="bento-label">Philosophy</div>
-        <div class="bento-quote">"Write code that <em>humans</em> can read."</div>
-      </div>
-
-      <!-- Row 3: Frontend + Tools (balanced 6+6) -->
-      <div class="bento-card fade-up" style="grid-column:span 6;">
-        <div class="bento-label">Frontend</div>
-        <div class="skill-chips" style="margin-top:12px;">
-          <span class="s-chip"><img src="img/icons/html.png"> HTML5</span>
-          <span class="s-chip"><img src="img/icons/css3.png"> CSS3</span>
-          <span class="s-chip"><img src="img/icons/js.png"> JavaScript</span>
+      <!-- Row 3: Interactive Terminal (12) -->
+      <div class="bento-card fade-up terminal-card" style="grid-column: span 12; padding: 0; background: #0d1117; display: flex; flex-direction: column;">
+        <div class="terminal-header" style="background: #161b22; padding: 10px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); display: flex; align-items: center; gap: 12px;">
+          <div class="editor-dots" style="display: flex; gap: 6px;">
+            <span style="width:10px;height:10px;border-radius:50%;background:#ff5f56;"></span>
+            <span style="width:10px;height:10px;border-radius:50%;background:#ffbd2e;"></span>
+            <span style="width:10px;height:10px;border-radius:50%;background:#27c93f;"></span>
+          </div>
+          <div class="terminal-title" style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #8b949e;">pranav@portfolio:~</div>
         </div>
-      </div>
-
-      <div class="bento-card fade-up" style="grid-column:span 6;">
-        <div class="bento-label">Tools &amp; DevOps</div>
-        <div class="skill-chips" style="margin-top:12px;">
-          <span class="s-chip"><img src="img/icons/github.png"> GitHub</span>
-          <span class="s-chip"><img src="img/icons/postman.svg"> Postman</span>
-          <span class="s-chip"><img src="img/icons/vs.png"> VS Code</span>
-          <span class="s-chip"><img src="img/icons/e.svg"> Eclipse</span>
+        <div class="terminal-body" id="terminalBody" style="padding: 20px; font-family: 'JetBrains Mono', monospace; font-size: 13.5px; line-height: 1.6; color: #c9d1d9; flex: 1; min-height: 200px; max-height: 300px; overflow-y: auto;">
+          <div class="terminal-output" id="terminalOutput">
+            <p style="margin-bottom: 8px;">Welcome to Pranav's interactive portfolio terminal!</p>
+            <p style="margin-bottom: 16px;">Type <span style="color: var(--accent);">help</span> to see available commands.</p>
+          </div>
+          <div class="terminal-input-line" style="display: flex; align-items: center; gap: 8px;">
+            <span class="terminal-prompt" style="color: #79c0ff; white-space: nowrap;">pranav@portfolio:~$</span>
+            <input type="text" id="terminalInput" autocomplete="off" spellcheck="false" style="background: transparent; border: none; outline: none; color: #c9a96e; font-family: 'JetBrains Mono', monospace; font-size: 13.5px; flex: 1; width: 100%;">
+          </div>
         </div>
       </div>
 
@@ -431,7 +495,8 @@
 <a href="#" id="scrollToTopBtn" class="scroll-to-top-btn"><i class="fas fa-chevron-up"></i></a>
 
 <!-- SCRIPTS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 <script src="JS/skill.js"></script>
 </body>
 </html>
