@@ -41,7 +41,7 @@ body:has(button:hover) .cursor-dot{width:12px;height:12px;}
 
 /* ── NAVBAR ── */
 .navbar{position:fixed!important;top:0;left:0;right:0;z-index:1000;background:rgba(12,12,12,0.9)!important;backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:16px 0;}
-.navbar-brand img{height:38px;}
+.navbar-brand img{height:65px;}
 .nav-link{color:var(--text-2)!important;font-size:13px;font-weight:500;letter-spacing:.3px;margin:0 14px;padding:4px 0!important;transition:color .2s;}
 .nav-link:hover{color:var(--text)!important;}
 .navbar-toggler{border:1px solid var(--border);padding:6px 10px;}
