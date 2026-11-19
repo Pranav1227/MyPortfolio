@@ -4,11 +4,33 @@ if (history.scrollRestoration) {
 }
 window.scrollTo(0, 0);
 
-/* ── CODE EDITOR TYPING ── */
+/* ── DYNAMIC EXPERIENCE TENURE CALCULATION ── */
+function calculateDynamicExperience() {
+  const startDate = new Date('2025-06-01'); // Career start at Mytek Innovations in June 2025
+  const now = new Date();
+  let totalMonths = (now.getFullYear() - startDate.getFullYear()) * 12 + (now.getMonth() - startDate.getMonth());
+  if (now.getDate() >= startDate.getDate()) {
+    totalMonths += 1;
+  }
+  totalMonths = Math.max(1, totalMonths);
+
+  if (totalMonths < 12) {
+    return `${totalMonths} months`;
+  }
+  const years = (totalMonths / 12).toFixed(1);
+  const wholeYears = Math.floor(totalMonths / 12);
+  const remainder = totalMonths % 12;
+  if (remainder === 0) {
+    return `${wholeYears}+ year${wholeYears > 1 ? 's' : ''}`;
+  }
+  return `${years}+ years`;
+}
+
+const dynamicExpTenure = calculateDynamicExperience();
+
+/* ── SCROLL-DRIVEN HERO ROLE & CODE EDITOR ── */
 const codeLines = [
   { text: '// developer.js — Pranav Bandagle', cls: 'c-comment' },
-  // { text: '// MERN Stack Developer @ Mytek Innovations', cls: 'c-comment' },
-  // { text: '', cls: 'c-plain' },
   { text: 'import { passion, coffee } from "life";', cls: 'c-plain', parts: [
     {t:'import ',c:'c-keyword'},{t:'{ passion, coffee }',c:'c-plain'},{t:' from ',c:'c-keyword'},{t:'"life"',c:'c-string'},{t:';',c:'c-plain'}
   ]},
@@ -25,15 +47,9 @@ const codeLines = [
   { text: '  company:    "Mytek Innovations",', cls: 'c-plain', parts: [
     {t:'  ',c:'c-plain'},{t:'company',c:'c-key'},{t:':    ',c:'c-plain'},{t:'"Mytek Innovations"',c:'c-string'},{t:',',c:'c-plain'}
   ]},
-  { text: '  experience: "1+ year",', cls: 'c-plain', parts: [
-    {t:'  ',c:'c-plain'},{t:'experience',c:'c-key'},{t:': ',c:'c-plain'},{t:'"1+ year"',c:'c-string'},{t:',',c:'c-plain'}
+  { text: `  experience: "${dynamicExpTenure}",`, cls: 'c-plain', parts: [
+    {t:'  ',c:'c-plain'},{t:'experience',c:'c-key'},{t:': ',c:'c-plain'},{t:`"${dynamicExpTenure}"`,c:'c-string'},{t:',',c:'c-plain'}
   ]},
-  // { text: '  stack:      ["MongoDB","Express","React","Node"],', cls: 'c-plain', parts: [
-  //   {t:'  ',c:'c-plain'},{t:'stack',c:'c-key'},{t:':      [',c:'c-plain'},{t:'"MongoDB"',c:'c-string'},{t:',',c:'c-plain'},{t:'"Express"',c:'c-string'},{t:',',c:'c-plain'},{t:'"React"',c:'c-string'},{t:',',c:'c-plain'},{t:'"Node"',c:'c-string'},{t:'],',c:'c-plain'}
-  // ]},
-  // { text: '  location:   "Mumbai, India",', cls: 'c-plain', parts: [
-  //   {t:'  ',c:'c-plain'},{t:'location',c:'c-key'},{t:':   ',c:'c-plain'},{t:'"Mumbai, India"',c:'c-string'},{t:',',c:'c-plain'}
-  // ]},
   { text: '  status:     "open to opportunities",', cls: 'c-plain', parts: [
     {t:'  ',c:'c-plain'},{t:'status',c:'c-key'},{t:':     ',c:'c-plain'},{t:'"open to opportunities"',c:'c-string'},{t:',',c:'c-plain'}
   ]},
@@ -44,72 +60,191 @@ const codeLines = [
   ]},
 ];
 
-function buildLineHTML(line) {
-  if (line.parts) {
-    return line.parts.map(p => `<span class="${p.c}">${p.t}</span>`).join('');
-  }
-  return `<span class="${line.cls}">${line.text}</span>`;
+function escapeHtml(str) {
+  return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 }
 
-function runCodeEditor() {
-  const output   = document.getElementById('codeOutput');
+function buildLineHTML(line) {
+  if (line.parts) {
+    return line.parts.map(p => `<span class="${p.c}">${escapeHtml(p.t)}</span>`).join('');
+  }
+  return `<span class="${line.cls}">${escapeHtml(line.text)}</span>`;
+}
+
+function renderPartialLine(line, charLimit) {
+  if (charLimit <= 0) return '';
+  if (!line.parts) {
+    const raw = line.text.substring(0, charLimit);
+    return `<span class="${line.cls}">${escapeHtml(raw)}</span>`;
+  }
+  let result = '';
+  let charsLeft = charLimit;
+  for (const part of line.parts) {
+    if (charsLeft <= 0) break;
+    const take = Math.min(part.t.length, charsLeft);
+    result += `<span class="${part.c}">${escapeHtml(part.t.substring(0, take))}</span>`;
+    charsLeft -= take;
+  }
+  return result;
+}
+
+// Character offsets calculation for smooth character-by-character typing
+let totalCodeChars = 0;
+let codeLineOffsets = [];
+function recomputeCodeOffsets() {
+  totalCodeChars = 0;
+  codeLineOffsets = codeLines.map(line => {
+    const len = Math.max(1, line.text.length + 1); // +1 for newline pause
+    const start = totalCodeChars;
+    totalCodeChars += len;
+    return { start, end: totalCodeChars, len };
+  });
+}
+recomputeCodeOffsets();
+
+// Smooth code editor typing animation engine
+let currentTypedChars = 0;
+let targetTypedChars = 0;
+let isEditorAnimating = false;
+
+function renderEditorAt(chars) {
+  const codeOutput = document.getElementById('codeOutput');
   const lineNums = document.getElementById('lineNums');
-  if (!output) return;
+  if (!codeOutput || !lineNums) return;
 
-  output.innerHTML = '';
-  lineNums.innerHTML = '';
+  const clamped = Math.max(0, Math.min(totalCodeChars, chars));
+  const renderedLines = [];
 
-  let lineIndex = 0;
-  let charIndex = 0;
-  let renderedLines = []; // fully rendered line HTML strings
-
-  function updateLineNums(count) {
-    lineNums.innerHTML = Array.from({length: count}, (_, i) =>
-      `<span>${i + 1}</span>`
-    ).join('');
+  for (let i = 0; i < codeLines.length; i++) {
+    const meta = codeLineOffsets[i];
+    if (clamped >= meta.end) {
+      // Completed line with full syntax highlighting
+      renderedLines.push(buildLineHTML(codeLines[i]));
+    } else if (clamped > meta.start) {
+      // Actively typing line character by character
+      const charsInLine = Math.floor(clamped - meta.start);
+      renderedLines.push(renderPartialLine(codeLines[i], charsInLine));
+      break;
+    } else {
+      break;
+    }
   }
 
-  function typeNextChar() {
-    if (lineIndex >= codeLines.length) {
-      // pause then restart
-      setTimeout(() => { runCodeEditor(); }, 3000);
+  if (renderedLines.length === 0) {
+    renderedLines.push(renderPartialLine(codeLines[0], Math.max(1, clamped)));
+  }
+
+  codeOutput.innerHTML = renderedLines.join('\n');
+  const count = renderedLines.length;
+  lineNums.innerHTML = Array.from({ length: count }, (_, i) => `<span>${i + 1}</span>`).join('');
+}
+
+function animateCodeEditor() {
+  const diff = targetTypedChars - currentTypedChars;
+  if (Math.abs(diff) > 0.15) {
+    currentTypedChars += diff * 0.22; // smooth 60fps easing
+    renderEditorAt(currentTypedChars);
+    requestAnimationFrame(animateCodeEditor);
+  } else {
+    currentTypedChars = targetTypedChars;
+    renderEditorAt(currentTypedChars);
+    isEditorAnimating = false;
+  }
+}
+
+function requestEditorRender(newTarget) {
+  targetTypedChars = newTarget;
+  if (!isEditorAnimating) {
+    isEditorAnimating = true;
+    requestAnimationFrame(animateCodeEditor);
+  }
+}
+
+/* ── SMOOTH TYPEWRITER FOR HERO ROLE (#typedText) ── */
+const scrollRoles = [
+  'MERN Stack Developer',
+  'Full Stack Software Engineer',
+  'Java Spring Boot Architect',
+  'Scalable Cloud & REST APIs',
+  'Open for High-Impact Roles'
+];
+
+let currentRoleText = '';
+let targetRoleText = scrollRoles[0];
+let typewriterTimeout = null;
+let isTypingRole = false;
+
+function typeHeroRoleTo(target) {
+  targetRoleText = target;
+  if (isTypingRole) return;
+
+  function stepTypewriter() {
+    isTypingRole = true;
+    const typedEl = document.getElementById('typedText');
+    if (!typedEl) { isTypingRole = false; return; }
+
+    if (currentRoleText === targetRoleText) {
+      isTypingRole = false;
       return;
     }
 
-    const line = codeLines[lineIndex];
-    const fullText = line.text;
-
-    if (charIndex <= fullText.length) {
-      // Rebuild output: all completed lines + current partial line
-      const partial = fullText.substring(0, charIndex);
-
-      // For partial, highlight only plain text (no partial HTML injection)
-      const partialSpan = `<span class="${line.cls}">${partial}</span>`;
-
-      output.innerHTML = renderedLines.join('\n') +
-        (renderedLines.length > 0 ? '\n' : '') +
-        partialSpan;
-
-      updateLineNums(renderedLines.length + 1);
-      charIndex++;
-      setTimeout(typeNextChar, charIndex === 1 ? 60 : 22);
+    if (!targetRoleText.startsWith(currentRoleText)) {
+      currentRoleText = currentRoleText.slice(0, -1);
+      typedEl.textContent = currentRoleText;
+      typewriterTimeout = setTimeout(stepTypewriter, 15);
     } else {
-      // Line complete — store with full syntax highlighting
-      renderedLines.push(buildLineHTML(line));
-      output.innerHTML = renderedLines.join('\n');
-      updateLineNums(renderedLines.length);
-      lineIndex++;
-      charIndex = 0;
-      const pause = line.text === '' ? 80 : 40;
-      setTimeout(typeNextChar, pause);
+      currentRoleText = targetRoleText.slice(0, currentRoleText.length + 1);
+      typedEl.textContent = currentRoleText;
+      typewriterTimeout = setTimeout(stepTypewriter, 28);
     }
   }
 
-  typeNextChar();
+  stepTypewriter();
 }
 
-// Start after loader finishes
-setTimeout(runCodeEditor, 1600);
+function updateScrollDrivenHero() {
+  const scrollY = window.scrollY || window.pageYOffset || 0;
+  const heroContainer = document.getElementById('home');
+  
+  if (heroContainer) {
+    const containerTop = heroContainer.offsetTop;
+    const containerHeight = heroContainer.offsetHeight - window.innerHeight;
+    
+    // Smooth progress through the pinned hero runway (0.0 to 1.0)
+    let progress = 0;
+    if (containerHeight > 60) {
+      progress = Math.min(1, Math.max(0, (scrollY - containerTop) / containerHeight));
+    } else {
+      progress = Math.min(1, Math.max(0, scrollY / 420));
+    }
+
+    // 1. Line 87: Hero Role typing animation
+    const targetIdx = Math.min(scrollRoles.length - 1, Math.floor(progress * scrollRoles.length));
+    typeHeroRoleTo(scrollRoles[targetIdx]);
+
+    // 2. Code Editor: character-by-character smooth typing as user scrolls
+    const initialMinChars = codeLineOffsets[1] ? codeLineOffsets[1].end : 50;
+    const newTarget = initialMinChars + (totalCodeChars - initialMinChars) * Math.min(1, progress / 0.94);
+    requestEditorRender(newTarget);
+  }
+}
+
+// RequestAnimationFrame scroll throttling for silky 60fps performance
+let isScrollScheduled = false;
+window.addEventListener('scroll', () => {
+  if (!isScrollScheduled) {
+    window.requestAnimationFrame(() => {
+      updateScrollDrivenHero();
+      isScrollScheduled = false;
+    });
+    isScrollScheduled = true;
+  }
+}, { passive: true });
+
+// Initial render
+updateScrollDrivenHero();
+setTimeout(updateScrollDrivenHero, 800);
+setTimeout(updateScrollDrivenHero, 1600);
 
 /* ── LOADER ── */
 
@@ -124,25 +259,38 @@ window.addEventListener('load', () => {
 const dot  = document.getElementById('cursorDot');
 const ring = document.getElementById('cursorRing');
 let rx = 0, ry = 0;
+let mouseX = -100, mouseY = -100;
+let cursorInitialized = false;
 
 window.addEventListener('mousemove', e => {
-  dot.style.left  = e.clientX + 'px';
-  dot.style.top   = e.clientY + 'px';
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+  dot.style.left = mouseX + 'px';
+  dot.style.top  = mouseY + 'px';
+
+  if (!cursorInitialized) {
+    rx = mouseX;
+    ry = mouseY;
+    cursorInitialized = true;
+    document.body.classList.add('has-custom-cursor');
+  }
 });
 
-function animateRing() {
-  // smooth lag behind cursor
-  requestAnimationFrame(animateRing);
-}
-animateRing();
+document.addEventListener('mouseenter', () => {
+  if (cursorInitialized) document.body.classList.add('has-custom-cursor');
+});
 
-let mouseX = 0, mouseY = 0;
-window.addEventListener('mousemove', e => { mouseX = e.clientX; mouseY = e.clientY; });
+document.addEventListener('mouseleave', () => {
+  document.body.classList.remove('has-custom-cursor');
+});
+
 (function followRing() {
-  rx += (mouseX - rx) * 0.12;
-  ry += (mouseY - ry) * 0.12;
-  ring.style.left = rx + 'px';
-  ring.style.top  = ry + 'px';
+  if (cursorInitialized) {
+    rx += (mouseX - rx) * 0.16;
+    ry += (mouseY - ry) * 0.16;
+    ring.style.left = rx + 'px';
+    ring.style.top  = ry + 'px';
+  }
   requestAnimationFrame(followRing);
 })();
 
@@ -154,21 +302,6 @@ window.addEventListener('scroll', () => {
   if (prog) prog.style.width = pct + '%';
 });
 
-/* ── TYPED TEXT ── */
-const roles = ['Full Stack Developer', 'MERN Stack Developer', 'Java Spring Boot Dev', 'Problem Solver'];
-let ri = 0, ci = 0, del = false;
-const typedEl = document.getElementById('typedText');
-function typeLoop() {
-  if (!typedEl) return;
-  const cur = roles[ri];
-  typedEl.textContent = del ? cur.substring(0, --ci) : cur.substring(0, ++ci);
-  let ms = del ? 55 : 100;
-  if (!del && ci === cur.length)  { ms = 1800; del = true; }
-  else if (del && ci === 0)        { del = false; ri = (ri + 1) % roles.length; ms = 350; }
-  setTimeout(typeLoop, ms);
-}
-typeLoop();
-
 /* ── SCROLL TO TOP ── */
 const scrollBtn = document.getElementById('scrollToTopBtn');
 window.addEventListener('scroll', () => {
@@ -179,46 +312,64 @@ scrollBtn && scrollBtn.addEventListener('click', e => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
-/* ── INTERSECTION OBSERVER (fade-up + skill bars + counters) ── */
+/* ── REVERSIBLE TWO-WAY SCROLL OBSERVER (TRIGGERS ABOVE MID-SCREEN) ── */
+// rootMargin: '0px 0px -52% 0px' sets the trigger line at 48% from top (strictly above mid-screen)
 const io = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
-    if (!entry.isIntersecting) return;
-    entry.target.classList.add('visible');
+    if (entry.isIntersecting) {
+      // Scrolling down: element passes above mid-screen -> animate IN
+      entry.target.classList.add('visible');
 
-    // skill bars
-    entry.target.querySelectorAll('.skill-bar-fill').forEach(bar => {
-      bar.style.width = bar.dataset.width + '%';
-    });
+      // Stagger child chips
+      entry.target.querySelectorAll('.anim-chip').forEach((chip, idx) => {
+        chip.style.transitionDelay = `${idx * 0.05}s`;
+        chip.classList.add('visible');
+      });
 
-    // counters
-    entry.target.querySelectorAll('.counter').forEach(el => {
-      const target = +el.dataset.target;
-      let n = 0;
-      const step = Math.ceil(target / 40);
-      const t = setInterval(() => {
-        n = Math.min(n + step, target);
-        el.textContent = n + '+';
-        if (n >= target) clearInterval(t);
-      }, 40);
-    });
+      // Animate skill bar graphs
+      entry.target.querySelectorAll('.skill-bar-fill').forEach(bar => {
+        bar.style.width = (bar.dataset.width || 80) + '%';
+      });
 
-    io.unobserve(entry.target);
+      // Animated counters
+      entry.target.querySelectorAll('.counter').forEach(el => {
+        const target = +el.dataset.target || 0;
+        if (!target) return;
+        let n = 0;
+        const step = Math.ceil(target / 40);
+        const t = setInterval(() => {
+          n = Math.min(n + step, target);
+          el.textContent = n + '+';
+          if (n >= target) clearInterval(t);
+        }, 35);
+      });
+    } else {
+      // Reverse scrolling up: element sinks below mid-screen -> animate OUT smoothly
+      entry.target.classList.remove('visible');
+
+      entry.target.querySelectorAll('.anim-chip').forEach(chip => {
+        chip.classList.remove('visible');
+        chip.style.transitionDelay = '0s';
+      });
+
+      entry.target.querySelectorAll('.skill-bar-fill').forEach(bar => {
+        bar.style.width = '0%';
+      });
+    }
   });
-}, { threshold: 0.15 });
+}, {
+  // Trigger line strictly above mid-screen
+  rootMargin: '0px 0px -52% 0px',
+  threshold: 0.02
+});
 
-document.querySelectorAll('.fade-up, .section').forEach(el => io.observe(el));
-
-/* ── ALSO trigger bars when bento section comes in view ── */
-const skillsIo = new IntersectionObserver(entries => {
-  if (!entries[0].isIntersecting) return;
-  document.querySelectorAll('.skill-bar-fill').forEach(bar => {
-    bar.style.width = bar.dataset.width + '%';
-  });
-  skillsIo.disconnect();
-}, { threshold: 0.1 });
-
-const skillsSec = document.getElementById('skills');
-if (skillsSec) skillsIo.observe(skillsSec);
+// Observe all section elements for distinct reversible entrance animations
+document.querySelectorAll(
+  '.anim-exp-card, .anim-project-left, .anim-project-right, .anim-bento-scale, ' +
+  '.anim-cert-card, .anim-contact-left, .anim-contact-form, ' +
+  '.anim-from-top, .anim-from-bottom, .anim-from-left, .anim-from-right, ' +
+  '.anim-chip, .fade-up, .bento-card, .exp-item, .proj-item'
+).forEach(el => io.observe(el));
 
 /* ── 3D TILT on project items ── */
 document.querySelectorAll('.proj-item').forEach(card => {
@@ -401,3 +552,147 @@ if (termInput && termOutput) {
   
   termBody.addEventListener('click', () => termInput.focus());
 }
+
+
+/* ── DYNAMIC EXPERIENCE TENURE CALCULATION ── */
+function initDynamicTenure() {
+  const durationText = document.getElementById('mytekDurationText');
+  if (durationText) {
+    durationText.textContent = dynamicExpTenure;
+  }
+}
+document.addEventListener('DOMContentLoaded', initDynamicTenure);
+initDynamicTenure();
+
+/* ── CONTACT FORM WITH 5-MINUTE ANTI-SPAM COOLDOWN TIMER ── */
+(function initContactWithCooldown() {
+  const form = document.getElementById('contactForm');
+  const btnSubmit = document.getElementById('btnSendMessage');
+  const cooldownNotice = document.getElementById('contactCooldownNotice');
+  const cooldownCountdown = document.getElementById('cooldownCountdown');
+  const successAlert = document.getElementById('contactSuccessAlert');
+  const nameInput = document.getElementById('senderName');
+  const emailInput = document.getElementById('senderEmail');
+  const msgInput = document.getElementById('senderMessage');
+
+  if (!form || !btnSubmit) return;
+
+  const COOLDOWN_KEY = 'pranav_portfolio_cooldown_expiry';
+  const COOLDOWN_MS = 5 * 60 * 1000; // 5 minutes
+  let timerInterval = null;
+
+  function updateTimer() {
+    const expiry = Number(localStorage.getItem(COOLDOWN_KEY) || 0);
+    const remaining = expiry - Date.now();
+
+    if (remaining > 0) {
+      const totalSeconds = Math.ceil(remaining / 1000);
+      const mins = Math.floor(totalSeconds / 60);
+      const secs = totalSeconds % 60;
+      const formatted = `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+
+      btnSubmit.disabled = true;
+      btnSubmit.innerHTML = `<i class="fas fa-lock me-2"></i>Cooldown Active (${formatted})`;
+      btnSubmit.style.opacity = '0.65';
+      btnSubmit.style.cursor = 'not-allowed';
+
+      if (nameInput) nameInput.disabled = true;
+      if (emailInput) emailInput.disabled = true;
+      if (msgInput) msgInput.disabled = true;
+
+      if (cooldownNotice) cooldownNotice.style.display = 'flex';
+      if (cooldownCountdown) cooldownCountdown.textContent = formatted;
+    } else {
+      clearInterval(timerInterval);
+      localStorage.removeItem(COOLDOWN_KEY);
+
+      btnSubmit.disabled = false;
+      btnSubmit.innerHTML = '<i class="fas fa-paper-plane me-2"></i>Send Message';
+      btnSubmit.style.opacity = '1';
+      btnSubmit.style.cursor = 'pointer';
+
+      if (nameInput) nameInput.disabled = false;
+      if (emailInput) emailInput.disabled = false;
+      if (msgInput) msgInput.disabled = false;
+
+      if (cooldownNotice) cooldownNotice.style.display = 'none';
+    }
+  }
+
+  // Check on load if cooldown is active
+  const initialExpiry = Number(localStorage.getItem(COOLDOWN_KEY) || 0);
+  if (initialExpiry > Date.now()) {
+    updateTimer();
+    timerInterval = setInterval(updateTimer, 1000);
+  }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const name = nameInput.value.trim();
+    const email = emailInput.value.trim();
+    const message = msgInput.value.trim();
+
+    if (!name || !email || !message) {
+      alert('Please fill out all fields.');
+      return;
+    }
+
+    const currentExpiry = Number(localStorage.getItem(COOLDOWN_KEY) || 0);
+    if (currentExpiry > Date.now()) {
+      alert('Anti-spam cooldown is active. Please wait before sending another message.');
+      return;
+    }
+
+    btnSubmit.disabled = true;
+    btnSubmit.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Sending Message...';
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          access_key: '05c779de-ca16-4370-9678-44d12a2af8b4',
+          name,
+          email,
+          message,
+          subject: `Portfolio Inquiry from ${name}`
+        }),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        if (typeof confetti === 'function') {
+          confetti({
+            particleCount: 160,
+            spread: 90,
+            origin: { y: 0.6 },
+            colors: ['#c9a96e', '#27c93f', '#ffffff']
+          });
+        }
+
+        form.reset();
+        if (successAlert) {
+          successAlert.style.display = 'flex';
+          setTimeout(() => { successAlert.style.display = 'none'; }, 9000);
+        }
+
+        // Set 5-minute persistent cooldown
+        localStorage.setItem(COOLDOWN_KEY, Date.now() + COOLDOWN_MS);
+        updateTimer();
+        clearInterval(timerInterval);
+        timerInterval = setInterval(updateTimer, 1000);
+      } else {
+        alert(result.message || 'Error sending message. Please try again.');
+        btnSubmit.disabled = false;
+        btnSubmit.innerHTML = '<i class="fas fa-paper-plane me-2"></i>Send Message';
+      }
+    } catch (err) {
+      console.error('Contact form error:', err);
+      alert('Unable to send message. Please try again.');
+      btnSubmit.disabled = false;
+      btnSubmit.innerHTML = '<i class="fas fa-paper-plane me-2"></i>Send Message';
+    }
+  });
+})();

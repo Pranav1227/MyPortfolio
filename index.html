@@ -77,44 +77,46 @@
 </div>
 
 <!-- ═══════════ HERO ═══════════ -->
-<section id="home">
-  <div class="container">
-    <div class="row align-items-center g-5">
-      <div class="col-lg-6">
+<section id="home" class="hero-scroll-container">
+  <div class="hero-sticky-frame">
+    <div class="container">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-6">
 
-        <p class="mb-1" style="font-size:18px;color:var(--text-2);">Hello, I'm</p>
-        <h1 class="hero-name" id="heroName">Pranav<br>Bandagle</h1>
-        <p class="hero-role"><span class="typed-text" id="typedText"></span></p>
-        <p class="hero-desc">B.E. Computer Engineering graduate from Mumbai, specialising in MERN Stack and Java Spring Boot. I build scalable, production-ready web applications with clean architecture.</p>
-        <div class="hero-actions">
-          <a href="#projects" class="btn-fill"><i class="fas fa-arrow-right"></i> View Work</a>
-          <a href="#contact" class="btn-ghost">Let's Talk</a>
+          <p class="mb-1" style="font-size:18px;color:var(--text-2);">Hello, I'm</p>
+          <h1 class="hero-name" id="heroName">Pranav<br>Bandagle</h1>
+          <p class="hero-role"><span class="typed-text" id="typedText"></span></p>
+          <p class="hero-desc">B.E. Computer Engineering graduate from Mumbai, specialising in MERN Stack and Java Spring Boot. I build scalable, production-ready web applications with clean architecture.</p>
+          <div class="hero-actions">
+            <a href="#projects" class="btn-fill"><i class="fas fa-arrow-right"></i> View Work</a>
+            <a href="#contact" class="btn-ghost">Let's Talk</a>
+          </div>
         </div>
-      </div>
-      <div class="col-lg-6">
-        <!-- CODE EDITOR -->
-        <div class="code-editor">
-          <div class="editor-topbar">
-            <div class="editor-dots">
-              <span class="dot-red"></span>
-              <span class="dot-yellow"></span>
-              <span class="dot-green"></span>
+        <div class="col-lg-6">
+          <!-- CODE EDITOR -->
+          <div class="code-editor">
+            <div class="editor-topbar">
+              <div class="editor-dots">
+                <span class="dot-red"></span>
+                <span class="dot-yellow"></span>
+                <span class="dot-green"></span>
+              </div>
+              <div class="editor-tab">
+                <i class="fab fa-js" style="color:#c9a96e;font-size:13px;"></i> developer.js
+              </div>
+              <div class="editor-actions">
+                <span class="editor-icon">⊡</span>
+              </div>
             </div>
-            <div class="editor-tab">
-              <i class="fab fa-js" style="color:#c9a96e;font-size:13px;"></i> developer.js
+            <div class="editor-body">
+              <div class="editor-lines" id="lineNums"></div>
+              <pre class="editor-code" id="editorCode"><code id="codeOutput"></code><span class="code-cursor">▋</span></pre>
             </div>
-            <div class="editor-actions">
-              <span class="editor-icon">⊡</span>
+            <div class="editor-statusbar">
+              <span>JavaScript</span>
+              <span>UTF-8</span>
+              <span style="color:var(--accent);">● Pranav Bandagle</span>
             </div>
-          </div>
-          <div class="editor-body">
-            <div class="editor-lines" id="lineNums"></div>
-            <pre class="editor-code" id="editorCode"><code id="codeOutput"></code><span class="code-cursor">▋</span></pre>
-          </div>
-          <div class="editor-statusbar">
-            <span>JavaScript</span>
-            <span>UTF-8</span>
-            <span style="color:var(--accent);">● Pranav Bandagle</span>
           </div>
         </div>
       </div>
@@ -122,36 +124,22 @@
   </div>
 </section>
 
-<!-- MARQUEE STRIP -->
-<div class="marquee-strip">
-  <div class="marquee-track">
-    <span class="marquee-item">MongoDB</span><span class="marquee-item">Express.js</span>
-    <span class="marquee-item">React</span><span class="marquee-item">Node.js</span>
-    <span class="marquee-item">Spring Boot</span><span class="marquee-item">Angular</span>
-    <span class="marquee-item">MySQL</span><span class="marquee-item">JavaScript</span>
-    <span class="marquee-item">Java</span><span class="marquee-item">REST APIs</span>
-    <span class="marquee-item">GitHub</span><span class="marquee-item">Postman</span>
-    <!-- Duplicate for seamless loop -->
-    <span class="marquee-item">MongoDB</span><span class="marquee-item">Express.js</span>
-    <span class="marquee-item">React</span><span class="marquee-item">Node.js</span>
-    <span class="marquee-item">Spring Boot</span><span class="marquee-item">Angular</span>
-    <span class="marquee-item">MySQL</span><span class="marquee-item">JavaScript</span>
-    <span class="marquee-item">Java</span><span class="marquee-item">REST APIs</span>
-    <span class="marquee-item">GitHub</span><span class="marquee-item">Postman</span>
-  </div>
-</div>
-
 
 <!-- ═══════════ EXPERIENCE ═══════════ -->
 <section id="experience" class="section">
   <div class="container">
-    <span class="sec-tag fade-up">Career</span>
-    <h2 class="sec-heading fade-up">Work <em>Experience</em></h2>
+    <div class="section-title-wrap">
+      <span class="sec-tag anim-from-top">Career</span>
+      <h2 class="sec-heading">
+        <span class="anim-from-left">Work</span> 
+        <em class="anim-from-right">Experience</em>
+      </h2>
+    </div>
 
     <div class="exp-timeline">
 
       <!-- Current Role -->
-      <div class="exp-item fade-up">
+      <div class="exp-item anim-exp-card">
         <div class="exp-left">
           <div class="exp-dot active"></div>
           <div class="exp-line"></div>
@@ -160,32 +148,41 @@
           <div class="exp-header">
             <div>
               <div class="exp-badge current">Current</div>
-              <h3 class="exp-role">MERN Stack Developer</h3>
+              <h3 class="exp-role">Full Stack Developer</h3>
               <div class="exp-company">
-                <i class="fas fa-building"></i> Mytek Innovations
+                <i class="fas fa-building"></i> Mytek Innovations Private Limited
               </div>
             </div>
             <div class="exp-meta">
               <div class="exp-date"><i class="fas fa-calendar-alt"></i> Sept 2025 — Present</div>
-              <div class="exp-duration"><i class="fas fa-clock"></i> ~10 months</div>
+              <div class="exp-duration" id="mytekDuration"><i class="fas fa-clock"></i> <span id="mytekDurationText">1.5+ years</span></div>
               <div class="exp-type full-time">Full-time</div>
             </div>
           </div>
-          <p class="exp-desc">Working as a Full Stack MERN developer, building and maintaining scalable web applications. Responsible for both frontend (React) and backend (Node.js / Express / MongoDB) development with a focus on clean architecture and performance.</p>
+          <p class="exp-desc">Full Stack Developer engineering and scaling production enterprise web applications and microservices at Mytek Innovations:</p>
+          <ul class="exp-desc-list">
+            <li>Developed and maintained scalable full-stack web applications using React.js, Redux, Node.js, Express.js, and MongoDB delivering secure, high-performance business solutions.</li>
+            <li>Designed and integrated RESTful APIs, enabling seamless frontend &amp; backend communication, optimized database queries, and implemented efficient state management using Redux.</li>
+            <li>Implemented secure authentication and authorization using JWT, OAuth 2.0, and Role-Based Access Control (RBAC), ensuring robust access management across enterprise applications.</li>
+            <li>Developed scalable backend services and APIs while automating deployments using AWS, Docker, and GitHub Actions CI/CD.</li>
+          </ul>
           <div class="exp-tech">
-            <span class="exp-tag"><i class="devicon-react-original colored"></i> React</span>
-            <span class="exp-tag"><i class="devicon-nodejs-plain colored"></i> Node.js</span>
-            <span class="exp-tag"><i class="devicon-express-original" style="color:#c9d1d9"></i> Express</span>
-            <span class="exp-tag"><i class="devicon-mongodb-plain colored"></i> MongoDB</span>
-            <span class="exp-tag"><i class="fab fa-js" style="color:#f0db4f"></i> JavaScript</span>
+            <span class="exp-tag anim-chip"><i class="devicon-react-original colored"></i> React</span>
+            <span class="exp-tag anim-chip"><i class="devicon-redux-original colored"></i> Redux</span>
+            <span class="exp-tag anim-chip"><i class="devicon-nodejs-plain colored"></i> Node.js</span>
+            <span class="exp-tag anim-chip"><i class="devicon-express-original" style="color:#c9d1d9"></i> Express</span>
+            <span class="exp-tag anim-chip"><i class="devicon-mongodb-plain colored"></i> MongoDB</span>
+            <span class="exp-tag anim-chip"><i class="devicon-amazonwebservices-plain-wordmark colored"></i> AWS</span>
+            <span class="exp-tag anim-chip"><i class="fab fa-js" style="color:#f0db4f"></i> JavaScript</span>
           </div>
         </div>
       </div>
 
       <!-- Internship -->
-      <div class="exp-item fade-up">
+      <div class="exp-item anim-exp-card">
         <div class="exp-left">
           <div class="exp-dot"></div>
+          <div class="exp-line end"></div>
         </div>
         <div class="exp-card">
           <div class="exp-header">
@@ -204,10 +201,10 @@
           </div>
           <p class="exp-desc">Joined Mytek Innovations as a MERN Stack intern, gaining hands-on industry experience. Contributed to real-world projects, collaborated with senior developers, and sharpened full-stack skills in a professional environment.</p>
           <div class="exp-tech">
-            <span class="exp-tag"><i class="devicon-react-original colored"></i> React</span>
-            <span class="exp-tag"><i class="devicon-nodejs-plain colored"></i> Node.js</span>
-            <span class="exp-tag"><i class="devicon-mongodb-plain colored"></i> MongoDB</span>
-            <span class="exp-tag"><i class="devicon-express-original" style="color:#c9d1d9"></i> Express</span>
+            <span class="exp-tag anim-chip"><i class="devicon-react-original colored"></i> React</span>
+            <span class="exp-tag anim-chip"><i class="devicon-nodejs-plain colored"></i> Node.js</span>
+            <span class="exp-tag anim-chip"><i class="devicon-mongodb-plain colored"></i> MongoDB</span>
+            <span class="exp-tag anim-chip"><i class="devicon-express-original" style="color:#c9d1d9"></i> Express</span>
           </div>
         </div>
       </div>
@@ -224,27 +221,61 @@
 
     <div class="proj-list">
 
-      <!-- Project 01 -->
-      <div class="proj-item fade-up" style="align-items: start;">
+      <!-- Project 01: Oanix AI -->
+      <div class="proj-item anim-project-left" style="align-items: start;">
         <div class="proj-num">01</div>
+        <div class="proj-info">
+          <h3>Oanix AI - AI-Powered SEO Auditing &amp; Social Media Content Engine</h3>
+          <div class="proj-subtitle">Oanix · 2026</div>
+          <ul class="proj-desc-list">
+            <li>Engineered an automated website intelligence platform that crawls websites to provide technical SEO diagnostics, keyword analysis, and actionable ranking insights.</li>
+            <li>Built automated multi-channel social media marketing workflows with AI-driven content generation for images, promotional videos, and compelling captions in under 5 seconds.</li>
+            <li>Integrated official OAuth 2.0 authentications and REST Graph APIs across 6 major social networks: LinkedIn, Instagram, Facebook, YouTube, X (Twitter), and Pinterest.</li>
+            <li>Developed an interactive drag-and-drop editorial calendar enabling users to queue, reschedule, and auto-publish content with 100% workflow automation.</li>
+            <li>Architected scalable backend microservices with worker queues and exponential backoff retry algorithms for reliable scheduled publishing.</li>
+            <li>Constructed predictable client-side caching with Redux Toolkit for zero-lag UI responsiveness during asynchronous AI generation calls.</li>
+          </ul>
+          <div class="proj-tags">
+            <span class="proj-tag">MERN Stack</span>
+            <span class="proj-tag">React</span>
+            <span class="proj-tag">Node.js</span>
+            <span class="proj-tag">Redux Toolkit</span>
+            <span class="proj-tag">Tailwind CSS</span>
+            <span class="proj-tag">JWT</span>
+            <span class="proj-tag">AI APIs</span>
+            <span class="proj-tag">OAuth 2.0</span>
+          </div>
+        </div>
+        <div class="proj-cta">
+          <a href="https://www.oanix.ai/" target="_blank" class="lnk-primary"><i class="fas fa-external-link-alt"></i> Live</a>
+        </div>
+      </div>
+
+      <!-- Project 02: Open4All -->
+      <div class="proj-item anim-project-right" style="align-items: start;">
+        <div class="proj-num">02</div>
         <div class="proj-info">
           <h3>Open4All - Employee Background Verification Platform</h3>
           <div class="proj-subtitle">Mytek Innovations Pvt. Ltd.</div>
           <ul class="proj-desc-list">
-            <li>Developed a multi-service background verification platform to detect fraudulent employee data.</li>
-            <li>Implemented verification modules including Identity, Address, CIBIL Score, Legal, and Employment checks.</li>
-            <li>Built geo-tagging selfie-based address verification to improve authenticity and fraud detection.</li>
-            <li>Designed a system to collect structured feedback from previous employers (HR, managers, colleagues).</li>
-            <li>Generated dynamic PDF reports using HTML-to-PDF (Node.js) with real-time data integration.</li>
-            <li>Developed a responsive UI with reusable components for scalability and maintainability.</li>
-            <li>Improved performance using Redis caching for faster data retrieval.</li>
+            <li>Developed an end-to-end multi-service background verification platform to streamline candidate vetting and detect fraudulent employee records for enterprise clients.</li>
+            <li>Implemented verification modules spanning Identity (Aadhaar &amp; PAN), Geo-tagged physical Address, CIBIL/Credit score, Legal/Court records, and Employment confirmations.</li>
+            <li>Engineered biometric geo-tagged selfie verification with mobile camera capture and postal radius tolerance to prevent address spoofing during field checks.</li>
+            <li>Designed a tokenized, tamper-proof referee feedback system sent directly to previous HR managers and supervisors for structured, rapid evaluations.</li>
+            <li>Developed a high-speed dynamic server-side HTML-to-PDF report generation engine in Node.js, compiling comprehensive multi-page compliance dossiers in &lt; 3.5 seconds.</li>
+            <li>Implemented Redis in-memory caching for candidate verification statuses and user sessions, cutting primary MongoDB database read load significantly.</li>
+            <li>Constructed an atomic, accessible UI component library using React and Tailwind CSS for maintainability and consistent status workflows.</li>
           </ul>
           <div class="proj-tags">
             <span class="proj-tag">MERN Stack</span>
-            <span class="proj-tag">Tailwind CSS</span>
-            <span class="proj-tag">JWT</span>
-            <span class="proj-tag">Redis</span>
+            <span class="proj-tag">MongoDB</span>
+            <span class="proj-tag">Express.js</span>
+            <span class="proj-tag">React</span>
             <span class="proj-tag">Node.js</span>
+            <span class="proj-tag">Tailwind CSS</span>
+            <span class="proj-tag">Redis</span>
+            <span class="proj-tag">JWT</span>
+            <span class="proj-tag">Puppeteer PDF</span>
           </div>
         </div>
         <div class="proj-cta">
@@ -252,51 +283,26 @@
         </div>
       </div>
 
-      <!-- Project 02 -->
-      <div class="proj-item fade-up" style="align-items: start;">
-        <div class="proj-num">02</div>
-        <div class="proj-info">
-          <h3>Borade AI</h3>
-          <div class="proj-subtitle">Mytek Innovations Pvt. Ltd.</div>
-          <ul class="proj-desc-list">
-            <li>Developed an AI-powered platform to analyze websites and provide SEO rankings and actionable insights.</li>
-            <li>Built features to identify website strengths and weaknesses through automated analysis.</li>
-            <li>Integrated AI-based content generation for creating images, videos, and social media posts.</li>
-            <li>Enabled integration with platforms including LinkedIn, Instagram, Facebook, YouTube, Twitter (X), and Pinterest.</li>
-            <li>Implemented post scheduling and automated publishing across multiple social media channels.</li>
-            <li>Developed backend services for API integration, data processing, and real-time content generation.</li>
-          </ul>
-          <div class="proj-tags">
-            <span class="proj-tag">MERN Stack</span>
-            <span class="proj-tag">Tailwind CSS</span>
-            <span class="proj-tag">JWT</span>
-            <span class="proj-tag">Redux</span>
-          </div>
-        </div>
-        <div class="proj-cta">
-          <a href="https://www.borade.ai/" target="_blank" class="lnk-primary"><i class="fas fa-external-link-alt"></i> Live</a>
-        </div>
-      </div>
-
-      <!-- Project 03 -->
-      <div class="proj-item fade-up">
+      <!-- Project 03: Exam Point -->
+      <div class="proj-item anim-project-left">
         <div class="proj-num">03</div>
         <div class="proj-info">
-          <h3>Exam Point</h3>
+          <h3>Exam Point - Online Examination &amp; Assessment Platform</h3>
           <div class="proj-subtitle">Personal Project</div>
           <ul class="proj-desc-list">
-            <li>Developed a comprehensive full-stack examination platform with secure user authentication and role-based access control.</li>
-            <li>Designed dynamic assessment modules allowing users to test their knowledge across various subjects and evaluate their performance.</li>
-            <li>Implemented a real-time chat and feedback system to facilitate seamless communication between students and instructors.</li>
-            <li>Built a robust RESTful API using Java Spring Boot, ensuring scalable and efficient backend operations with MySQL data persistence.</li>
-            <li>Created an intuitive, responsive frontend using Angular to provide a seamless and interactive test-taking experience.</li>
+            <li>Developed a full-stack online examination platform using Spring Boot, Angular, and MySQL, enabling secure online assessments with role-based access for students and administrators.</li>
+            <li>Developed responsive and interactive user interfaces using Angular, integrated real-time chat and feedback functionality, and optimized backend performance for scalable user management.</li>
+            <li>Implemented JWT-based authentication and Role-Based Access Control (RBAC) to secure application resources and manage permissions for administrators, instructors, and students.</li>
+            <li>Built dynamic examination modules supporting timed tests, automatic evaluation, score calculation, and detailed performance reports to enhance the assessment process.</li>
           </ul>
           <div class="proj-tags">
+            <span class="proj-tag">Java</span>
             <span class="proj-tag">Spring Boot</span>
             <span class="proj-tag">Angular</span>
             <span class="proj-tag">MySQL</span>
-            <span class="proj-tag">REST API</span>
-            <span class="proj-tag">Java</span>
+            <span class="proj-tag">REST APIs</span>
+            <span class="proj-tag">JWT</span>
+            <span class="proj-tag">Hibernate / JPA</span>
           </div>
         </div>
         <div class="proj-cta">
@@ -312,22 +318,27 @@
 <!-- ═══════════ SKILLS BENTO ═══════════ -->
 <section id="skills" class="section">
   <div class="container">
-    <span class="sec-tag fade-up">Expertise</span>
-    <h2 class="sec-heading fade-up">Skills &amp; Stack</h2>
+    <div class="section-title-wrap">
+      <span class="sec-tag anim-from-top">Expertise</span>
+      <h2 class="sec-heading">
+        <span class="anim-from-left">Technical</span> 
+        <em class="anim-from-right">Skills &amp; Stack</em>
+      </h2>
+    </div>
 
     <div class="bento">
 
       <!-- Row 1: MERN Stack (7) + Frontend (5) -->
-      <div class="bento-card fade-up" style="grid-column: span 7;">
+      <div class="bento-card anim-bento-scale" style="grid-column: span 7;">
         <div class="bento-label">Primary Stack</div>
         <div class="bento-title">MERN Ecosystem</div>
         <div class="bento-sub">Building scalable APIs and dynamic UIs with full-stack JavaScript.</div>
         <div class="stack-grid">
           <div class="skill-chips col-chips">
-            <span class="s-chip"><i class="devicon-mongodb-plain colored"></i> MongoDB</span>
-            <span class="s-chip"><i class="devicon-express-original" style="color:#fff;"></i> Express.js</span>
-            <span class="s-chip"><i class="devicon-react-original colored"></i> React</span>
-            <span class="s-chip"><i class="devicon-nodejs-plain colored"></i> Node.js</span>
+            <span class="s-chip anim-chip"><i class="devicon-mongodb-plain colored"></i> MongoDB</span>
+            <span class="s-chip anim-chip"><i class="devicon-express-original" style="color:#fff;"></i> Express.js</span>
+            <span class="s-chip anim-chip"><i class="devicon-react-original colored"></i> React</span>
+            <span class="s-chip anim-chip"><i class="devicon-nodejs-plain colored"></i> Node.js</span>
           </div>
           <div class="skill-bars">
             <div class="skill-bar-item">
@@ -350,44 +361,44 @@
         </div>
       </div>
 
-      <div class="bento-card fade-up" style="grid-column: span 5; background: linear-gradient(145deg, var(--bg-2) 0%, rgba(201,169,110,0.05) 100%);">
-        <div class="bento-label">UI & Design</div>
+      <div class="bento-card anim-bento-scale" style="grid-column: span 5; background: linear-gradient(145deg, var(--bg-2) 0%, rgba(201,169,110,0.05) 100%);">
+        <div class="bento-label">UI &amp; Design</div>
         <div class="bento-title">Frontend</div>
         <div class="bento-sub">Crafting responsive and pixel-perfect interfaces.</div>
         <div class="skill-chips" style="margin-top: 20px;">
-          <span class="s-chip"><img src="img/icons/html.png"> HTML5</span>
-          <span class="s-chip"><img src="img/icons/css3.png"> CSS3</span>
-          <span class="s-chip"><img src="img/icons/js.png"> JavaScript</span>
-          <span class="s-chip"><i class="devicon-tailwindcss-plain colored"></i> Tailwind CSS</span>
-          <span class="s-chip"><i class="devicon-bootstrap-plain colored"></i> Bootstrap</span>
+          <span class="s-chip anim-chip"><img src="img/icons/html.png"> HTML5</span>
+          <span class="s-chip anim-chip"><img src="img/icons/css3.png"> CSS3</span>
+          <span class="s-chip anim-chip"><img src="img/icons/js.png"> JavaScript</span>
+          <span class="s-chip anim-chip"><i class="devicon-tailwindcss-plain colored"></i> Tailwind CSS</span>
+          <span class="s-chip anim-chip"><i class="devicon-bootstrap-plain colored"></i> Bootstrap</span>
         </div>
       </div>
 
       <!-- Row 2: Tools (5) + Java Stack (7) -->
-      <div class="bento-card fade-up" style="grid-column: span 5; background: linear-gradient(145deg, rgba(121,192,255,0.05) 0%, var(--bg-2) 100%);">
-        <div class="bento-label">DevOps & Architecture</div>
+      <div class="bento-card anim-bento-scale" style="grid-column: span 5; background: linear-gradient(145deg, rgba(121,192,255,0.05) 0%, var(--bg-2) 100%);">
+        <div class="bento-label">DevOps &amp; Architecture</div>
         <div class="bento-title">Tools</div>
         <div class="bento-sub">Streamlining workflows and optimizing performance.</div>
         <div class="skill-chips" style="margin-top: 20px;">
-          <span class="s-chip"><i class="devicon-git-plain colored"></i> Git</span>
-          <span class="s-chip"><img src="img/icons/github.png"> GitHub</span>
-          <span class="s-chip"><img src="img/icons/postman.svg"> Postman</span>
-          <span class="s-chip"><img src="img/icons/vs.png"> VS Code</span>
-          <span class="s-chip"><img src="img/icons/e.svg"> Eclipse</span>
-          <span class="s-chip"><i class="devicon-redis-plain colored"></i> Redis</span>
+          <span class="s-chip anim-chip"><i class="devicon-git-plain colored"></i> Git</span>
+          <span class="s-chip anim-chip"><img src="img/icons/github.png"> GitHub</span>
+          <span class="s-chip anim-chip"><img src="img/icons/postman.svg"> Postman</span>
+          <span class="s-chip anim-chip"><img src="img/icons/vs.png"> VS Code</span>
+          <span class="s-chip anim-chip"><img src="img/icons/e.svg"> Eclipse</span>
+          <span class="s-chip anim-chip"><i class="devicon-redis-plain colored"></i> Redis</span>
         </div>
       </div>
 
-      <div class="bento-card fade-up" style="grid-column: span 7;">
+      <div class="bento-card anim-bento-scale" style="grid-column: span 7;">
         <div class="bento-label">Enterprise Stack</div>
         <div class="bento-title">Java Ecosystem</div>
         <div class="bento-sub">Robust backends with object-oriented architecture.</div>
         <div class="stack-grid">
           <div class="skill-chips col-chips">
-            <span class="s-chip"><img src="img/icons/java.png"> Java</span>
-            <span class="s-chip"><img src="img/icons/sb.png"> Spring Boot</span>
-            <span class="s-chip"><i class="devicon-angularjs-plain colored"></i> Angular</span>
-            <span class="s-chip"><img src="img/icons/mysql.png"> MySQL</span>
+            <span class="s-chip anim-chip"><img src="img/icons/java.png"> Java</span>
+            <span class="s-chip anim-chip"><img src="img/icons/sb.png"> Spring Boot</span>
+            <span class="s-chip anim-chip"><i class="devicon-angularjs-plain colored"></i> Angular</span>
+            <span class="s-chip anim-chip"><img src="img/icons/mysql.png"> MySQL</span>
           </div>
           <div class="skill-bars">
             <div class="skill-bar-item">
@@ -411,7 +422,7 @@
       </div>
 
       <!-- Row 3: Interactive Terminal (12) -->
-      <div class="bento-card fade-up terminal-card" style="grid-column: span 12; padding: 0; background: #0d1117; display: flex; flex-direction: column;">
+      <div class="bento-card anim-bento-scale terminal-card" style="grid-column: span 12; padding: 0; background: #0d1117; display: flex; flex-direction: column;">
         <div class="terminal-header" style="background: #161b22; padding: 10px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); display: flex; align-items: center; gap: 12px;">
           <div class="editor-dots" style="display: flex; gap: 6px;">
             <span style="width:10px;height:10px;border-radius:50%;background:#ff5f56;"></span>
@@ -440,17 +451,22 @@
 <!-- ═══════════ CERTIFICATIONS ═══════════ -->
 <section id="certification" class="section">
   <div class="container">
-    <span class="sec-tag fade-up">Achievements</span>
-    <h2 class="sec-heading fade-up">Certifications</h2>
+    <div class="section-title-wrap">
+      <span class="sec-tag anim-from-top">Achievements</span>
+      <h2 class="sec-heading">
+        <span class="anim-from-left">Verified</span> 
+        <em class="anim-from-right">Certifications</em>
+      </h2>
+    </div>
     <div class="cert-grid">
-      <div class="cert-card fade-up">
+      <div class="cert-card anim-cert-card">
         <div class="cert-icon"><i class="fas fa-code"></i></div>
         <h3>Java Full Stack Developer</h3>
         <div class="cert-issuer">Edu Bridge Learning Pvt Ltd</div>
         <p>Comprehensive program covering Frontend &amp; Backend. Built a core Java mini-project and a major project using Spring Boot and Angular with real-world architecture.</p>
         <a href="img/EdubridgeCertificate.png" target="_blank" class="cert-btn"><i class="fas fa-certificate"></i> View Certificate</a>
       </div>
-      <div class="cert-card fade-up">
+      <div class="cert-card anim-cert-card">
         <div class="cert-icon"><i class="fas fa-globe"></i></div>
         <h3>Web Development</h3>
         <div class="cert-issuer">ShapeAI</div>
@@ -464,10 +480,15 @@
 <!-- ═══════════ CONTACT ═══════════ -->
 <section id="contact" class="section">
   <div class="container">
-    <span class="sec-tag fade-up">Get In Touch</span>
-    <h2 class="sec-heading fade-up">Let's Work Together</h2>
+    <div class="section-title-wrap">
+      <span class="sec-tag anim-from-top">Get In Touch</span>
+      <h2 class="sec-heading">
+        <span class="anim-from-left">Let's Work</span> 
+        <em class="anim-from-right">Together</em>
+      </h2>
+    </div>
     <div class="contact-wrapper">
-      <div class="fade-up">
+      <div class="anim-contact-left">
         <h3 class="contact-heading">Ready to build something <em>great?</em></h3>
         <p class="contact-desc">Open to full-time roles, freelance projects, and collaborations. If you have an idea or an opportunity, drop me a message.</p>
         <div class="contact-item">
@@ -483,23 +504,43 @@
           <div><div class="ci-label">Location</div><div class="ci-val">Mumbai, Maharashtra, India</div></div>
         </div>
       </div>
-      <div class="contact-form-wrap fade-up">
-        <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+      <div class="contact-form-wrap anim-contact-form">
+        <form id="contactForm">
           <input type="hidden" name="access_key" value="05c779de-ca16-4370-9678-44d12a2af8b4">
-          <div class="form-group"><label>Your Name</label><input type="text" name="name" placeholder="John Doe" required></div>
-          <div class="form-group"><label>Email Address</label><input type="email" name="email" placeholder="john@example.com" required></div>
-          <div class="form-group"><label>Message</label><textarea name="message" rows="5" placeholder="Tell me about your project..." required></textarea></div>
-          <button type="submit" class="btn-submit"><i class="fas fa-paper-plane me-2"></i>Send Message</button>
+          <div class="form-group">
+            <label>Your Name</label>
+            <input type="text" id="senderName" name="name" placeholder="John Doe" required>
+          </div>
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" id="senderEmail" name="email" placeholder="john@example.com" required>
+          </div>
+          <div class="form-group">
+            <label>Message</label>
+            <textarea id="senderMessage" name="message" rows="5" placeholder="Tell me about your project or opportunity..." required></textarea>
+          </div>
+          <button type="submit" id="btnSendMessage" class="btn-submit">
+            <i class="fas fa-paper-plane me-2"></i>Send Message
+          </button>
         </form>
+
+        <!-- Cooldown / Anti-Spam Notice -->
+        <div id="contactCooldownNotice" class="contact-cooldown-notice" style="display:none;">
+          <div class="cooldown-icon"><i class="fas fa-shield-alt"></i></div>
+          <div class="cooldown-content">
+            <h4>Anti-Spam Protection Active</h4>
+            <p>Your message was sent successfully. To protect against spam, you can send another message in <strong id="cooldownCountdown">05:00</strong>.</p>
+          </div>
+        </div>
+
+        <!-- Success Alert -->
+        <div id="contactSuccessAlert" class="contact-success-alert" style="display:none;">
+          <i class="fas fa-check-circle me-2"></i> Message sent successfully! Thank you for reaching out.
+        </div>
       </div>
     </div>
   </div>
 </section>
-
-<!-- FOOTER -->
-<footer>
-  <p>© 2025 <span>Pranav Bandagle</span> · Built with precision & passion</p>
-</footer>
 
 <!-- SCROLL TO TOP -->
 <a href="#" id="scrollToTopBtn" class="scroll-to-top-btn"><i class="fas fa-chevron-up"></i></a>
