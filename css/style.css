@@ -1054,6 +1054,14 @@ footer span{color:var(--accent);font-weight:600;}
   }
 
   /* 7. Certifications & Contact */
+  .anim-contact-form,
+  .anim-contact-left,
+  .contact-form-wrap {
+    opacity: 1 !important;
+    transform: none !important;
+    visibility: visible !important;
+    display: block !important;
+  }
   .cert-grid {
     grid-template-columns: 1fr !important;
     gap: 16px !important;
