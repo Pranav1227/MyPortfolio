@@ -2,6 +2,7 @@
   "name": "my-portfolio",
   "version": "1.0.0",
   "scripts": {
+    "build": "node build.js",
     "start": "npx serve .",
     "dev": "npx serve .",
     "serve": "npx serve ."
