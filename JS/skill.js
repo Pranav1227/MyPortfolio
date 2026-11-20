@@ -203,10 +203,6 @@ function typeHeroRoleTo(target) {
 }
 
 function updateScrollDrivenHero() {
-  if (window.innerWidth <= 768) {
-    requestEditorRender(totalCodeChars);
-  }
-
   const scrollY = window.scrollY || window.pageYOffset || 0;
   const heroContainer = document.getElementById('home');
   
@@ -226,12 +222,10 @@ function updateScrollDrivenHero() {
     const targetIdx = Math.min(scrollRoles.length - 1, Math.floor(progress * scrollRoles.length));
     typeHeroRoleTo(scrollRoles[targetIdx]);
 
-    // 2. Code Editor: character-by-character smooth typing as user scrolls on desktop
-    if (window.innerWidth > 768) {
-      const initialMinChars = codeLineOffsets[1] ? codeLineOffsets[1].end : 50;
-      const newTarget = initialMinChars + (totalCodeChars - initialMinChars) * Math.min(1, progress / 0.94);
-      requestEditorRender(newTarget);
-    }
+    // 2. Code Editor: character-by-character smooth typing as user scrolls
+    const initialMinChars = codeLineOffsets[1] ? codeLineOffsets[1].end : 50;
+    const newTarget = initialMinChars + (totalCodeChars - initialMinChars) * Math.min(1, progress / 0.94);
+    requestEditorRender(newTarget);
   }
 }
 
