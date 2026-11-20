@@ -15,8 +15,8 @@
 }
 
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-html{scroll-behavior:smooth;}
-body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;cursor:none;}
+html{scroll-behavior:smooth;overflow-x:hidden;max-width:100%;}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;max-width:100vw;width:100%;position:relative;cursor:none;}
 a{text-decoration:none;color:inherit;}
 
 /* ── CUSTOM CURSOR ── */
@@ -777,3 +777,347 @@ footer span{color:var(--accent);font-weight:600;}
   from { opacity: 0; transform: translateY(6px); }
   to { opacity: 1; transform: translateY(0); }
 }
+
+/* ═══════════════════════════════════════════════════════════
+   MOBILE VIEWPORT & OVERFLOW ELIMINATION (<= 768px)
+   Leaves Desktop Styles 100% Intact
+   ═══════════════════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+  /* 1. Prevent directional entrance animations from pushing content horizontally */
+  .anim-from-left,
+  .anim-from-right,
+  .anim-project-left,
+  .anim-project-right,
+  .anim-contact-left {
+    transform: translateY(24px) !important;
+  }
+  .anim-from-left.visible,
+  .anim-from-right.visible,
+  .anim-project-left.visible,
+  .anim-project-right.visible,
+  .anim-contact-left.visible {
+    transform: translateY(0) !important;
+  }
+
+  /* 2. Page & Container Constraints */
+  html, body {
+    overflow-x: hidden !important;
+    max-width: 100vw !important;
+    width: 100% !important;
+  }
+  .container {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  .row {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  .section {
+    padding: 60px 0 !important;
+    overflow-x: hidden !important;
+  }
+
+  /* 3. Hero Section & Code Editor */
+  #home.hero-scroll-container {
+    height: auto !important;
+    min-height: auto !important;
+    padding: 85px 0 36px !important;
+  }
+  .hero-sticky-frame {
+    position: relative !important;
+    height: auto !important;
+    min-height: auto !important;
+    top: auto !important;
+    overflow: visible !important;
+    padding: 0 !important;
+  }
+  .hero-name {
+    font-size: clamp(34px, 8.5vw, 46px) !important;
+    line-height: 1.1 !important;
+    margin-bottom: 10px !important;
+  }
+  .hero-role {
+    font-size: 16px !important;
+    min-height: 28px !important;
+  }
+  .hero-desc {
+    font-size: 13.5px !important;
+    line-height: 1.65 !important;
+    margin: 0 auto 24px !important;
+    max-width: 100% !important;
+  }
+  .hero-actions {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px !important;
+    width: 100% !important;
+  }
+  .btn-fill, .btn-ghost {
+    width: 100% !important;
+    justify-content: center !important;
+    text-align: center !important;
+    box-sizing: border-box !important;
+  }
+  .code-editor {
+    max-width: 100% !important;
+    width: 100% !important;
+    margin-top: 24px !important;
+    box-sizing: border-box !important;
+  }
+  .editor-body {
+    max-width: 100% !important;
+    min-height: auto !important;
+    max-height: 260px !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    box-sizing: border-box !important;
+  }
+  .editor-lines {
+    min-width: 24px !important;
+    padding: 12px 4px !important;
+    padding-right: 6px !important;
+  }
+  .editor-lines span {
+    font-size: 11px !important;
+    line-height: 1.65 !important;
+  }
+  .editor-code {
+    max-width: 100% !important;
+    font-size: 11px !important;
+    line-height: 1.65 !important;
+    padding: 12px 8px !important;
+    white-space: pre !important;
+    overflow-x: auto !important;
+    box-sizing: border-box !important;
+  }
+  .editor-statusbar {
+    padding: 6px 10px !important;
+    font-size: 10px !important;
+    gap: 10px !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+  }
+
+  /* 4. Experience Timeline */
+  .exp-timeline {
+    width: 100% !important;
+  }
+  .exp-item {
+    display: grid !important;
+    grid-template-columns: 24px 1fr !important;
+    gap: 12px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  .exp-left {
+    padding-top: 22px !important;
+  }
+  .exp-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 18px 14px !important;
+    margin-bottom: 20px !important;
+  }
+  .exp-card:hover {
+    transform: none !important;
+  }
+  .exp-header {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 8px !important;
+  }
+  .exp-role {
+    font-size: 17px !important;
+    line-height: 1.3 !important;
+    margin-bottom: 4px !important;
+  }
+  .exp-company {
+    font-size: 13px !important;
+  }
+  .exp-meta {
+    width: 100% !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 6px 12px !important;
+    margin-top: 4px !important;
+  }
+  .exp-desc-list {
+    padding-left: 16px !important;
+    font-size: 12.5px !important;
+    line-height: 1.6 !important;
+  }
+  .exp-tech {
+    gap: 6px !important;
+  }
+  .exp-tag {
+    font-size: 11px !important;
+    padding: 4px 8px !important;
+  }
+
+  /* 5. Projects Section */
+  .proj-list {
+    gap: 18px !important;
+  }
+  .proj-item {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 12px !important;
+    padding: 18px 14px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  .proj-item:hover {
+    transform: none !important;
+  }
+  .proj-num {
+    font-size: 26px !important;
+    margin-bottom: 0 !important;
+  }
+  .proj-info {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  .proj-info h3 {
+    font-size: 18px !important;
+    margin-bottom: 4px !important;
+  }
+  .proj-desc-list {
+    padding-left: 16px !important;
+    font-size: 12.5px !important;
+    line-height: 1.6 !important;
+    max-width: 100% !important;
+  }
+  .proj-cta {
+    width: 100% !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 8px !important;
+    margin-top: 6px !important;
+  }
+  .proj-cta a {
+    width: 100% !important;
+    justify-content: center !important;
+    padding: 10px 14px !important;
+    font-size: 13px !important;
+    text-align: center !important;
+    box-sizing: border-box !important;
+  }
+
+  /* 6. Bento Grid & Terminal */
+  .bento {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 16px !important;
+    width: 100% !important;
+  }
+  .bento-card {
+    grid-column: unset !important;
+    grid-row: unset !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 18px 14px !important;
+    box-sizing: border-box !important;
+  }
+  .bento-card:hover {
+    transform: none !important;
+  }
+  .terminal-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+  }
+  .terminal-body {
+    padding: 14px 12px !important;
+    font-size: 11.5px !important;
+  }
+  .terminal-input-line {
+    flex-wrap: wrap !important;
+    gap: 4px !important;
+  }
+  .terminal-prompt {
+    font-size: 11px !important;
+  }
+  #terminalInput {
+    font-size: 11px !important;
+    min-width: 120px !important;
+  }
+
+  /* 7. Certifications & Contact */
+  .cert-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+    width: 100% !important;
+  }
+  .cert-card {
+    padding: 20px 16px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  .cert-card:hover {
+    transform: none !important;
+  }
+  .contact-wrapper {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+    width: 100% !important;
+  }
+  .contact-form-wrap {
+    padding: 20px 16px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  .contact-item {
+    padding: 12px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  .ci-val {
+    font-size: 13px !important;
+    word-break: break-all !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-name {
+    font-size: 32px !important;
+  }
+  .hero-role {
+    font-size: 15px !important;
+  }
+  .sec-heading {
+    font-size: 25px !important;
+  }
+  .exp-role {
+    font-size: 16px !important;
+  }
+  .exp-card {
+    padding: 16px 12px !important;
+  }
+  .proj-item {
+    padding: 16px 12px !important;
+  }
+  .bento-card {
+    padding: 16px 12px !important;
+  }
+  .cert-card {
+    padding: 18px 14px !important;
+  }
+  .contact-form-wrap {
+    padding: 18px 12px !important;
+  }
+}
+
