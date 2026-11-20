@@ -377,20 +377,6 @@ document.querySelectorAll(
   '.anim-chip, .fade-up, .bento-card, .exp-item, .proj-item'
 ).forEach(el => io.observe(el));
 
-// Bottom-of-page trigger: ensure contact elements are always revealed when reaching page bottom
-function checkBottomContactVisibility() {
-  const scrollBottom = window.innerHeight + (window.scrollY || window.pageYOffset || 0);
-  const docHeight = document.documentElement.scrollHeight;
-  if (docHeight - scrollBottom < 350 || window.innerWidth <= 768) {
-    document.querySelectorAll('.anim-contact-form, .anim-contact-left').forEach(el => {
-      el.classList.add('visible');
-    });
-  }
-}
-window.addEventListener('scroll', checkBottomContactVisibility, { passive: true });
-window.addEventListener('resize', checkBottomContactVisibility, { passive: true });
-checkBottomContactVisibility();
-
 /* ── 3D TILT on project items ── */
 document.querySelectorAll('.proj-item').forEach(card => {
   card.addEventListener('mousemove', e => {
