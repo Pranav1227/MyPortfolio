@@ -202,59 +202,31 @@ function typeHeroRoleTo(target) {
   stepTypewriter();
 }
 
-let mobileRoleTimer = null;
-let mobileRoleIdx = 0;
-function startMobileRoleRotation() {
-  if (!mobileRoleTimer) {
-    mobileRoleTimer = setInterval(() => {
-      if (window.innerWidth > 768) {
-        clearInterval(mobileRoleTimer);
-        mobileRoleTimer = null;
-        return;
-      }
-      mobileRoleIdx = (mobileRoleIdx + 1) % scrollRoles.length;
-      typeHeroRoleTo(scrollRoles[mobileRoleIdx]);
-    }, 2800);
-  }
-}
-
 function updateScrollDrivenHero() {
-  const heroContainer = document.getElementById('home');
-  if (!heroContainer) return;
-
-  // Mobile viewport optimization: auto-compile code snippet and rotate roles
-  if (window.innerWidth <= 768) {
-    requestEditorRender(totalCodeChars);
-    startMobileRoleRotation();
-    return;
-  }
-
-  // Clear mobile timer if resized back to desktop
-  if (mobileRoleTimer) {
-    clearInterval(mobileRoleTimer);
-    mobileRoleTimer = null;
-  }
-
   const scrollY = window.scrollY || window.pageYOffset || 0;
-  const containerTop = heroContainer.offsetTop;
-  const containerHeight = heroContainer.offsetHeight - window.innerHeight;
+  const heroContainer = document.getElementById('home');
   
-  // Smooth progress through the pinned hero runway (0.0 to 1.0)
-  let progress = 0;
-  if (containerHeight > 60) {
-    progress = Math.min(1, Math.max(0, (scrollY - containerTop) / containerHeight));
-  } else {
-    progress = Math.min(1, Math.max(0, scrollY / 420));
+  if (heroContainer) {
+    const containerTop = heroContainer.offsetTop;
+    const containerHeight = heroContainer.offsetHeight - window.innerHeight;
+    
+    // Smooth progress through the pinned hero runway (0.0 to 1.0)
+    let progress = 0;
+    if (containerHeight > 60) {
+      progress = Math.min(1, Math.max(0, (scrollY - containerTop) / containerHeight));
+    } else {
+      progress = Math.min(1, Math.max(0, scrollY / 420));
+    }
+
+    // 1. Line 87: Hero Role typing animation
+    const targetIdx = Math.min(scrollRoles.length - 1, Math.floor(progress * scrollRoles.length));
+    typeHeroRoleTo(scrollRoles[targetIdx]);
+
+    // 2. Code Editor: character-by-character smooth typing as user scrolls
+    const initialMinChars = codeLineOffsets[1] ? codeLineOffsets[1].end : 50;
+    const newTarget = initialMinChars + (totalCodeChars - initialMinChars) * Math.min(1, progress / 0.94);
+    requestEditorRender(newTarget);
   }
-
-  // 1. Line 87: Hero Role typing animation
-  const targetIdx = Math.min(scrollRoles.length - 1, Math.floor(progress * scrollRoles.length));
-  typeHeroRoleTo(scrollRoles[targetIdx]);
-
-  // 2. Code Editor: character-by-character smooth typing as user scrolls
-  const initialMinChars = codeLineOffsets[1] ? codeLineOffsets[1].end : 50;
-  const newTarget = initialMinChars + (totalCodeChars - initialMinChars) * Math.min(1, progress / 0.94);
-  requestEditorRender(newTarget);
 }
 
 // RequestAnimationFrame scroll throttling for silky 60fps performance
@@ -267,10 +239,6 @@ window.addEventListener('scroll', () => {
     });
     isScrollScheduled = true;
   }
-}, { passive: true });
-
-window.addEventListener('resize', () => {
-  updateScrollDrivenHero();
 }, { passive: true });
 
 // Initial render
